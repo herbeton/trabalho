@@ -1,7 +1,7 @@
 package sample;
 
+import br.com.model.ConexaoDB;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.chart.Axis;
@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Observable;
 
 public class Main extends Application {
 

@@ -1,4 +1,4 @@
-package sample;
+package br.com.model;
 
 /**
  * Created by herbeton on 04/04/16.
