@@ -27,11 +27,12 @@ public class Main extends Application {
         stage.setTitle("Gráfico da PSV");
         //definindo os eixos
 
-        eixoX.setLabel("Tempo");
-        eixoY.setLabel("Pressão");
+        //eixoX.setLabel("Tempo");
+        //eixoY.setLabel("Pressão");
+
         //creating the chart
         final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(eixoX,eixoY);
-        lineChart.setTitle("Pressão X Tempo da PSV");
+        //lineChart.setTitle("Pressão X Tempo da PSV");
         series.setName("Pontos da PSV sem interpolação!");
 
         pegandoOsDados();
