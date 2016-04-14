@@ -118,11 +118,11 @@ public class windowGraphController {
             serieInformacao.getData().add(new XYChart.Data(dadosPSVGrafico.getTempo(), dadosPSVGrafico.getPressao()));
             serieInformacao.setName("A PSV passou do limite!");
         }
-        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoMinima.getText().toString())){
+        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoSetPSV.getText().toString())){
             serieInformacao.getData().add(new XYChart.Data(dadosPSVGrafico.getTempo(), dadosPSVGrafico.getPressao()));
             serieInformacao.setName("A PSV abriu!");
         }
-        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoSetPSV.getText().toString())){
+        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoMinima.getText().toString())){
             serieInformacao.getData().add(new XYChart.Data(dadosPSVGrafico.getTempo(), dadosPSVGrafico.getPressao()));
             serieInformacao.setName("A PSV não abriu!");
         }

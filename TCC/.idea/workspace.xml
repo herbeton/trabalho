@@ -76,27 +76,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="windowGraph.fxml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="windowGraph.fxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5689654">
-              <caret line="53" column="77" selection-start-line="53" selection-start-column="77" selection-end-line="53" selection-end-column="77" />
+            <state vertical-scroll-proportion="4.256579">
+              <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="windowGraphController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="windowGraphController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.4118645">
-              <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1460593064156" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
+                <marker date="1460593422257" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
               </folding>
             </state>
           </provider>
@@ -164,9 +164,9 @@
         <option value="$PROJECT_DIR$/src/br/com/model/ConexaoDB.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/br/com/execute/executeApplicationGraph.java" />
-        <option value="$PROJECT_DIR$/src/br/com/view/windowGraph.fxml" />
         <option value="$PROJECT_DIR$/src/br/com/model/DadosPSVGrafico.java" />
         <option value="$PROJECT_DIR$/src/br/com/controller/windowGraphController.java" />
+        <option value="$PROJECT_DIR$/src/br/com/view/windowGraph.fxml" />
       </list>
     </option>
   </component>
@@ -889,12 +889,12 @@
       <workItem from="1460493788392" duration="12216000" />
       <workItem from="1460540487194" duration="3455000" />
       <workItem from="1460568441439" duration="3680000" />
-      <workItem from="1460579201097" duration="13098000" />
+      <workItem from="1460579201097" duration="14243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56599000" />
+    <option name="totallyTimeSpent" value="57744000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -916,7 +916,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36774194" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36774194" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24900873" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -978,7 +978,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1460593064156" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1460593422257" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
           </folding>
         </state>
       </provider>
@@ -1021,7 +1021,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1460593064156" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1460593422257" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
           </folding>
         </state>
       </provider>
@@ -1060,7 +1060,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1460593064156" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1460593422257" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
           </folding>
         </state>
       </provider>
@@ -1389,17 +1389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5689654">
-          <caret line="53" column="77" selection-start-line="53" selection-start-column="77" selection-end-line="53" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/model/DadosPSVGrafico.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1423,12 +1412,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4118645">
-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1460593064156" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1460593422257" expanded="true" signature="3404:3433" placeholder="select * fro... DadosPSVGrafico" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.256579">
+          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
