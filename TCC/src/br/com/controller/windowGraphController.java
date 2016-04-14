@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import br.com.model.ConexaoDB;
+import br.com.model.DadosPSVGrafico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.Axis;
@@ -9,8 +10,13 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+
 import javax.swing.*;
+import javax.swing.text.html.ImageView;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -23,6 +29,7 @@ public class windowGraphController {
     public TextField txtPressaoSetPSV;
     public Button btnPlotGraph;
     public Double pegaMaiorTempo;
+    public Double pegaMaiorPressao;
 
     @FXML LineChart<Number, Number> graphWindow;
 
@@ -35,11 +42,11 @@ public class windowGraphController {
     XYChart.Series seriesSetPressaoPSV = new XYChart.Series();
     XYChart.Series seriesMaxPressaoPSV = new XYChart.Series();
     XYChart.Series seriesMinPressaoPSV = new XYChart.Series();
+    XYChart.Series serieInformacao = new XYChart.Series();
 
 
 
     public void checkDatasPSVPlot(ActionEvent event) {
-        plotParametrosPSVUsuario();
         System.out.println("Valor: " + txtPressaoSetPSV.getText().toString());
         if(!txtPressaoSetPSV.getText().isEmpty() && !txtPressaoMaxima.getText().isEmpty()
                 && !txtPressaoMinima.getText().isEmpty()) {
@@ -66,17 +73,19 @@ public class windowGraphController {
         series.setName("Pontos da PSV sem interpolação!");
         pegandoOsDados();
         //graphWindow.setLegendVisible(false);
-        graphWindow.getData().addAll(series, seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
+        graphWindow.getData().addAll(series, seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV,serieInformacao);
 
 
         //graphWindow.setData(lineChartData);
-        graphWindow.createSymbolsProperty();
+        graphWindow.getLegendSide();
 
     }
 
     public void pegandoOsDados(){
         Connection conexao;
         pegaMaiorTempo = 0d;
+        pegaMaiorPressao = 0d;
+        DadosPSVGrafico dadosPSVGrafico = new DadosPSVGrafico();
         series.getData().clear();
         seriesSetPressaoPSV.getData().clear();
         seriesMaxPressaoPSV.getData().clear();
@@ -91,10 +100,31 @@ public class windowGraphController {
                 if(resultSet.getDouble(3) > pegaMaiorTempo){
                     pegaMaiorTempo = resultSet.getDouble(3);
                 }
+                if(resultSet.getDouble(3) > pegaMaiorPressao){
+                    pegaMaiorPressao = resultSet.getDouble(2);
+                    dadosPSVGrafico.setPressao(pegaMaiorPressao);
+                    dadosPSVGrafico.setTempo(resultSet.getDouble(3));
+                }
             }
+            testeInformacaoPSV(dadosPSVGrafico);
             plotParameterSetMaxMinPSV();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void testeInformacaoPSV(DadosPSVGrafico dadosPSVGrafico){
+        if(pegaMaiorPressao >= Double.parseDouble(txtPressaoMaxima.getText().toString())){
+            serieInformacao.getData().add(new XYChart.Data(dadosPSVGrafico.getTempo(), dadosPSVGrafico.getPressao()));
+            serieInformacao.setName("A PSV passou do limite!");
+        }
+        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoMinima.getText().toString())){
+            serieInformacao.getData().add(new XYChart.Data(dadosPSVGrafico.getTempo(), dadosPSVGrafico.getPressao()));
+            serieInformacao.setName("A PSV abriu!");
+        }
+        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoSetPSV.getText().toString())){
+            serieInformacao.getData().add(new XYChart.Data(dadosPSVGrafico.getTempo(), dadosPSVGrafico.getPressao()));
+            serieInformacao.setName("A PSV não abriu!");
         }
     }
 

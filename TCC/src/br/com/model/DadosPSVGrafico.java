@@ -5,6 +5,30 @@ package br.com.model;
  */
 public class DadosPSVGrafico {
     int id;
-    long pressao;
-    long tempo;
+    Double pressao;
+    Double tempo;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Double getPressao() {
+        return pressao;
+    }
+
+    public void setPressao(Double pressao) {
+        this.pressao = pressao;
+    }
+
+    public Double getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(Double tempo) {
+        this.tempo = tempo;
+    }
 }
