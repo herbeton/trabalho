@@ -24,6 +24,8 @@ public class executeApplicationGraph extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        primaryStage.setMaximized(true);
         primaryStage.setTitle("Gráfico da PSV");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

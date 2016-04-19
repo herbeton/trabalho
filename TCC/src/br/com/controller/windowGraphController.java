@@ -4,6 +4,7 @@ import br.com.model.ConexaoDB;
 import br.com.model.DadosPSVGrafico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -12,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import javax.swing.text.html.ImageView;
@@ -133,7 +136,7 @@ public class windowGraphController {
         //set PSV
         seriesSetPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoSetPSV.getText().toString())));//tempoXpressao
         seriesSetPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoSetPSV.getText().toString())));
-        seriesSetPressaoPSV.setName("Set PSV");
+        seriesSetPressaoPSV.setName("Ajuste PSV");
 
         //Max PSV
         seriesMaxPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoMaxima.getText().toString())));
@@ -144,5 +147,14 @@ public class windowGraphController {
         seriesMinPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoMinima.getText().toString())));
         seriesMinPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoMinima.getText().toString())));
         seriesMinPressaoPSV.setName("Min PSV");
+    }
+
+    public void openSample(ActionEvent event){
+        Stage stage = new Stage();
+        Scene scene = new Scene(new VBox());
+        stage.setTitle("sample");
+        stage.setResizable(false);//para não deixar mecher no tamanho da janela
+        stage.setScene(scene);
+        stage.show();
     }
 }

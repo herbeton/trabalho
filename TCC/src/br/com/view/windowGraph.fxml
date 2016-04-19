@@ -8,6 +8,10 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -22,7 +26,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Arquivo">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" onAction="#openSample" text="Close" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Editar">
@@ -30,6 +34,12 @@
                     <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="PSV">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Cadastrar PSV" />
+                      <MenuItem mnemonicParsing="false" text="Cadastrar dados de uma PSV" />
+                    </items>
+                  </Menu>
                 <Menu mnemonicParsing="false" text="Ajuda">
                   <items>
                     <MenuItem mnemonicParsing="false" text="About" />
@@ -51,11 +61,11 @@
                   </AnchorPane>
                   <VBox>
                      <children>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="469.0" prefWidth="95.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="102.0">
                            <children>
-                              <Label prefHeight="20.0" prefWidth="130.0" text="Pressão de set da PSV" AnchorPane.leftAnchor="0.0">
+                              <Label prefHeight="20.0" prefWidth="130.0" text="Pressão de ajuste da PSV" AnchorPane.leftAnchor="0.0">
                                  <font>
-                                    <Font size="9.0" />
+                                    <Font size="8.0" />
                                  </font>
                               </Label>
                               <Label layoutY="52.0" text="Pressão máxima" AnchorPane.leftAnchor="0.0">
@@ -71,9 +81,41 @@
                               <TextField fx:id="txtPressaoSetPSV" layoutX="-20.0" layoutY="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                               <TextField fx:id="txtPressaoMaxima" layoutY="66.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                               <TextField fx:id="txtPressaoMinima" layoutX="2.0" layoutY="114.0" prefHeight="26.0" prefWidth="141.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <Button fx:id="btnPlotGraph" layoutX="-2.0" layoutY="161.0" mnemonicParsing="false" onAction="#checkDatasPSVPlot" text="Plot" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <Button fx:id="btnPlotGraph" layoutY="151.0" mnemonicParsing="false" onAction="#checkDatasPSVPlot" prefHeight="14.0" prefWidth="102.0" text="Plot" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
+                        <TabPane prefHeight="173.0" prefWidth="102.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="PSV's">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="162.0" prefWidth="102.0">
+                                       <children>
+                                          <TableView fx:id="tablrPsvs" layoutX="-60.0" layoutY="-60.0" prefHeight="140.0" prefWidth="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="C1" />
+                                              <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Historiador">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tableHistorian" layoutX="-42.0" layoutY="-51.0" prefHeight="140.0" prefWidth="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="C1" />
+                                              <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
                      </children>
                   </VBox>
               </items>
