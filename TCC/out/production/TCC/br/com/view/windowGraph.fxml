@@ -36,7 +36,8 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="PSV">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Cadastrar dados" />
+                        <MenuItem mnemonicParsing="false" onAction="#abrirCadastroPSV" text="Cadastrar PSV" />
+                      <MenuItem mnemonicParsing="false" onAction="#cadastroDeDadosDaPSV" text="Cadastrar dados de uma PSV" />
                     </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="Ajuda">

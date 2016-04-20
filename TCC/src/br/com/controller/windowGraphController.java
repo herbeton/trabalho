@@ -4,6 +4,9 @@ import br.com.model.ConexaoDB;
 import br.com.model.DadosPSVGrafico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
@@ -11,15 +14,11 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import javax.swing.*;
-import javax.swing.text.html.ImageView;
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -156,5 +155,33 @@ public class windowGraphController {
         stage.setResizable(false);//para não deixar mecher no tamanho da janela
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void abrirCadastroPSV(ActionEvent event) throws IOException {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("br/com/view/windowRegisterPSVs.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Cadastro das PSVs");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cadastroDeDadosDaPSV(ActionEvent event) throws IOException {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("br/com/view/windowRegisterDataPSVs.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Cadastro de dados da PSVs");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
