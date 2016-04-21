@@ -128,9 +128,14 @@ public class windowGraphController {
         for(int i = 0; i < quantPSVs ; i++) {
             String sql = "select * from DadosPSV WHERE idPSV = '" + listaDeIdPSVs.get(i) + "'";
             String sqlNomePSV = "select nomePSV from PSVs where idPSV = '" + listaDeIdPSVs.get(i) + "'";
+            String nomePSVAtual = "";
+            ResultSet resultadoNomePSV = null;
             ResultSet resultSet = null;
             try {
                 resultSet = conexao.createStatement().executeQuery(sql);
+                resultadoNomePSV = conexao.createStatement().executeQuery(sqlNomePSV);
+                boolean v = resultadoNomePSV.next();
+                nomePSVAtual = resultadoNomePSV.getString(1);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -147,7 +152,7 @@ public class windowGraphController {
                             dadosPSV.setTempoPSV(resultSet.getDouble(3));
                         }
                     }
-                    series.setName("Pontos da PSV sem interpolação!");
+                    series.setName(nomePSVAtual);
                     listaDeSeriesDasPSVs.add(series);
                     //series.getData().clear();
                     series = new XYChart.Series();
