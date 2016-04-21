@@ -51,13 +51,12 @@ public class windowGraphController {
     XYChart.Series serieInformacao = new XYChart.Series();
 
 
-
     public void checkDatasPSVPlot(ActionEvent event) {
         System.out.println("Valor: " + txtPressaoSetPSV.getText().toString());
         if(!txtPressaoSetPSV.getText().isEmpty() && !txtPressaoMaxima.getText().isEmpty()
                 && !txtPressaoMinima.getText().isEmpty()) {
-            if (txtPressaoSetPSV.getText().matches("\\d*") && txtPressaoMaxima.getText().matches("\\d*") &&
-                    txtPressaoMinima.getText().matches("\\d*")) {
+//            if (txtPressaoSetPSV.getText().matches("\\d*") && txtPressaoMaxima.getText().matches("\\d*") &&
+//                    txtPressaoMinima.getText().matches("\\d*")) {
                 if((Double.valueOf(txtPressaoMaxima.getText().toString()) > Double.valueOf(txtPressaoSetPSV.getText().toString())) &&
                         (Double.valueOf(txtPressaoSetPSV.getText().toString())> Double.valueOf(txtPressaoMinima.getText().toString()))){
 
@@ -68,9 +67,9 @@ public class windowGraphController {
                     JOptionPane.showConfirmDialog(null, "Os valores das pressões da PSV não está no padrão!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
                 }
 
-            } else {
-                JOptionPane.showConfirmDialog(null, "Os dados não condizem com os parametros da PSV!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
-            }
+//            } else {
+//                JOptionPane.showConfirmDialog(null, "Os dados não condizem com os parametros da PSV!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
+//            }
         }
 
         else{
@@ -134,7 +133,7 @@ public class windowGraphController {
             try {
                 resultSet = conexao.createStatement().executeQuery(sql);
                 resultadoNomePSV = conexao.createStatement().executeQuery(sqlNomePSV);
-                boolean v = resultadoNomePSV.next();
+                resultadoNomePSV.next();
                 nomePSVAtual = resultadoNomePSV.getString(1);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -154,7 +153,6 @@ public class windowGraphController {
                     }
                     series.setName(nomePSVAtual);
                     listaDeSeriesDasPSVs.add(series);
-                    //series.getData().clear();
                     series = new XYChart.Series();
                 }
             } catch (SQLException e) {

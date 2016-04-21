@@ -2,11 +2,11 @@ package br.com.controller;
 
 import br.com.model.ConexaoDB;
 import br.com.model.DadosPSVGrafico;
+import br.com.model.PSVs;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,11 +20,12 @@ public class windowRegisterDataPSVsController {
     public TextField txtPressaoPSV;
     public TextField txtTempoPSV;
     public Button btnCadastrarDadosPSV;
-    public List listaDePSVs = new ArrayList<String>();
+    public ArrayList<PSVs> listaDePSVs = new ArrayList<PSVs>();
     public MenuButton txtListaPSVs;
+    private boolean umaVezMouseMoved = false;
+    private int indicePSVSelecionada;
 
     public windowRegisterDataPSVsController(){
-        //insereDadosPSVNaListaDaVies();
         pegaListaDePSVs();
     }
 
@@ -47,13 +48,15 @@ public class windowRegisterDataPSVsController {
         Connection conexao;
         try {
             conexao = ConexaoDB.conectar();
-            String sql = "select nomePSV from PSVs";
+            String sql = "select idPSV,nomePSV from PSVs";
             ResultSet resultSet = conexao.createStatement().executeQuery(sql);
             //adicionando dados a lista
             while (resultSet.next()){
-                listaDePSVs.add(resultSet.getString(1));
+                PSVs psv = new PSVs();
+                psv.setIdPSV(resultSet.getInt(1));
+                psv.setNomePSV(resultSet.getString(2));
+                listaDePSVs.add(psv);
             }
-            //insereDadosPSVNaListaDaVies();
         }
         catch (SQLException e1) {
             e1.printStackTrace();
@@ -61,8 +64,67 @@ public class windowRegisterDataPSVsController {
     }
 
     public void insereDadosPSVNaListaDaVies(){
-        MenuItem menuItem = new MenuItem();
-        menuItem.setText("oi");
-        txtListaPSVs.getItems().add(menuItem);
+        if(!umaVezMouseMoved) {
+            for (int i=0 ; i<listaDePSVs.size() ; i++) {
+                txtListaPSVs.getItems().add(new CheckMenuItem(listaDePSVs.get(i).getNomePSV()));
+            }
+            umaVezMouseMoved = true;
+        }
+    }
+
+    public void atualizaTxtListaPSVs(){
+        //txtListaPSVs.setText(txtListaPSVs.getId());
+        //System.out.println("" + txtListaPSVs.isS);
+//        System.out.println(""+txtListaPSVs.getItems().size());
+//        System.out.println(""+txtListaPSVs.getItems().get(2).getText());
+        for(MenuItem item : txtListaPSVs.getItems()) {
+            CheckMenuItem checkMenuItem = (CheckMenuItem) item;
+            if(checkMenuItem.isSelected()) {
+//                System.out.println("Selected item :" + checkMenuItem.getText());
+                txtListaPSVs.setText(checkMenuItem.getText());
+                checkMenuItem.setSelected(false);
+                pegaIndicePSVPeloNome(checkMenuItem.getText().toString());
+            }
+        }
+    }
+
+    private void pegaIndicePSVPeloNome(String nomePSV){
+        for (int i=0 ; i<listaDePSVs.size() ; i++) {
+            if(nomePSV == listaDePSVs.get(i).getNomePSV()){
+                indicePSVSelecionada = listaDePSVs.get(i).getIdPSV();
+            }
+        }
+    }
+
+    public void verificarCadastrarDadosPSV(){
+        if(!txtPressaoPSV.getText().isEmpty() && !txtTempoPSV.getText().isEmpty()) {
+//            if (txtPressaoPSV.getText().matches("\\d*") && txtTempoPSV.getText().matches("\\d*")) {
+
+                insereDadosPSVNoDB();
+
+//            } else {
+//                JOptionPane.showConfirmDialog(null, "Os dados não condizem com os parametros da PSV!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
+//            }
+        }
+
+        else{
+            JOptionPane.showConfirmDialog(null, "Todos os campos tem que ser preenchidos!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
+        }
+    }
+
+    private void insereDadosPSVNoDB(){
+        Connection conexao;
+        try {
+            conexao = ConexaoDB.conectar();
+            String sql = "INSERT INTO DadosPSV (pressaoPSV, tempoPSV, idPSV) VALUES ('" + txtPressaoPSV.getText().toString()
+                    + "' , '" + txtTempoPSV.getText().toString() + "' , '"+ indicePSVSelecionada + "')";
+            conexao.createStatement().executeUpdate(sql);
+            txtListaPSVs.setText("");
+            txtPressaoPSV.clear();
+            txtTempoPSV.clear();
+        }
+        catch (Exception e){
+
+        }
     }
 }

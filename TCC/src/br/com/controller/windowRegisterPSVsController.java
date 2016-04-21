@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -18,7 +19,18 @@ public class windowRegisterPSVsController {
     public TextArea txtDescricaoPSV;
     public Button btnCadastrarPSV;
 
-    public void insereDadosPSVNoDB(ActionEvent event){
+    public void verificarCadastrarPSV(){
+        if(!txtNomeDaPSV.getText().isEmpty()) {
+
+            inserePSVNoDB();
+
+        }
+        else{
+            JOptionPane.showConfirmDialog(null, "O campos nome tem que ser preenchidos!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
+        }
+    }
+
+    public void inserePSVNoDB(){
         Connection conexao;
         try {
             conexao = ConexaoDB.conectar();

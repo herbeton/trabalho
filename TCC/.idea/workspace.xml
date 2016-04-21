@@ -61,22 +61,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="windowGraphController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="windowGraphController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67955804">
-              <caret line="154" column="47" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="56" column="59" selection-start-line="55" selection-start-column="8" selection-end-line="56" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1070#1086#0" expanded="true" />
-                <marker date="1461233201543" expanded="true" signature="4804:4826" placeholder="select * fro... DadosPSVGrafico" />
-                <marker date="1461233201543" expanded="true" signature="4804:4840" placeholder="select * fro... DadosPSV" />
-                <marker date="1461233201543" expanded="true" signature="4804:4842" placeholder="select * fro... DadosPSV" />
-                <marker date="1461233201543" expanded="true" signature="4804:4871" placeholder="select * fro... DadosPSV" />
-                <marker date="1461233201543" expanded="true" signature="4907:4976" placeholder="select nomeP... PSVs" />
-                <marker date="1461233201543" expanded="true" signature="6656:6678" placeholder="select idPSV... PSVs" />
+                <marker date="1461248444362" expanded="true" signature="4813:4835" placeholder="select * fro... DadosPSVGrafico" />
+                <marker date="1461248444362" expanded="true" signature="4813:4849" placeholder="select * fro... DadosPSV" />
+                <marker date="1461248444362" expanded="true" signature="4813:4851" placeholder="select * fro... DadosPSV" />
+                <marker date="1461248444362" expanded="true" signature="4813:4880" placeholder="select * fro... DadosPSV" />
+                <marker date="1461248444362" expanded="true" signature="4916:4985" placeholder="select nomeP... PSVs" />
+                <marker date="1461248444362" expanded="true" signature="6605:6627" placeholder="select idPSV... PSVs" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="windowRegisterDataPSVsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="111" selection-end-column="9" />
+              <folding>
+                <element signature="e#602#608#0" expanded="true" />
+                <element signature="e#778#779#0" expanded="true" />
+                <element signature="e#811#812#0" expanded="true" />
+                <marker date="1461248418637" expanded="true" signature="981:1143" placeholder="INSERT INTO DadosPSV... " />
+                <marker date="1461248418637" expanded="true" signature="1476:1506" placeholder="select nomeP... PSVs" />
+                <marker date="1461248418637" expanded="true" signature="4069:4237" placeholder="INSERT INTO DadosPSV... " />
+                <marker date="1461248418637" expanded="true" signature="4069:4241" placeholder="INSERT INTO DadosPSV... " />
+                <marker date="1461248418637" expanded="true" signature="4069:4270" placeholder="INSERT INTO PSVs... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="windowRegisterPSVsController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterPSVsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.14917128">
+              <caret line="21" column="37" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="37" />
+              <folding>
+                <marker date="1461248681622" expanded="true" signature="919:968" placeholder="INSERT INTO PSVs... " />
+                <marker date="1461248681622" expanded="true" signature="919:1033" placeholder="INSERT INTO PSVs... " />
+                <marker date="1461248681622" expanded="true" signature="919:1034" placeholder="INSERT INTO PSVs... " />
+                <marker date="1461248681622" expanded="true" signature="919:1081" placeholder="INSERT INTO PSVs... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="windowRegisterDataPSVs.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/com/view/windowRegisterDataPSVs.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.086207">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -112,14 +159,14 @@
         <option value="$PROJECT_DIR$/src/br/com/view/windowGraph.fxml" />
         <option value="$PROJECT_DIR$/src/br/com/execute/executeApplicationGraph.java" />
         <option value="$PROJECT_DIR$/src/br/com/view/windowRegisterPSVs.fxml" />
-        <option value="$PROJECT_DIR$/src/br/com/controller/windowRegisterPSVsController.java" />
         <option value="$PROJECT_DIR$/src/br/com/view/windowRegisterDataPSVs.fxml" />
-        <option value="$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java" />
         <option value="$PROJECT_DIR$/src/br/com/model/PSV2.java" />
         <option value="$PROJECT_DIR$/src/br/com/model/PSVs.java" />
         <option value="$PROJECT_DIR$/src/br/com/model/DadosPSV.java" />
         <option value="$PROJECT_DIR$/src/br/com/model/HistoricoPSV.java" />
+        <option value="$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java" />
         <option value="$PROJECT_DIR$/src/br/com/controller/windowGraphController.java" />
+        <option value="$PROJECT_DIR$/src/br/com/controller/windowRegisterPSVsController.java" />
       </list>
     </option>
   </component>
@@ -849,12 +896,12 @@
       <workItem from="1461133556097" duration="6244000" />
       <workItem from="1461173790743" duration="5889000" />
       <workItem from="1461188565019" duration="8797000" />
-      <workItem from="1461229924621" duration="3307000" />
+      <workItem from="1461229924621" duration="15219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90633000" />
+    <option name="totallyTimeSpent" value="102545000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -867,7 +914,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -879,7 +926,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36774194" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24848485" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24848485" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -915,27 +962,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/br/com/controller/windowRegisterPSVsController.java</url>
-          <line>26</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java</url>
-          <line>52</line>
+          <line>118</line>
           <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java</url>
-          <line>135</line>
-          <properties />
-          <option name="timeStamp" value="47" />
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="48" />
+      <option name="time" value="55" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -944,37 +985,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/br/com/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1070#1086#0" expanded="true" />
-            <marker date="1461233201543" expanded="true" signature="4804:4826" placeholder="select * fro... DadosPSVGrafico" />
-            <marker date="1461233201543" expanded="true" signature="4804:4840" placeholder="select * fro... DadosPSV" />
-            <marker date="1461233201543" expanded="true" signature="4804:4842" placeholder="select * fro... DadosPSV" />
-            <marker date="1461233201543" expanded="true" signature="4804:4871" placeholder="select * fro... DadosPSV" />
-            <marker date="1461233201543" expanded="true" signature="4907:4976" placeholder="select nomeP... PSVs" />
-            <marker date="1461233201543" expanded="true" signature="6656:6678" placeholder="select idPSV... PSVs" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/execute/executeApplicationGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/model/DadosPSVGrafico.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1279,47 +1289,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterPSVsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10497238">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <marker date="1461174918359" expanded="true" signature="626:675" placeholder="INSERT INTO PSVs... " />
-            <marker date="1461174918359" expanded="true" signature="626:740" placeholder="INSERT INTO PSVs... " />
-            <marker date="1461174918359" expanded="true" signature="626:741" placeholder="INSERT INTO PSVs... " />
-            <marker date="1461174918359" expanded="true" signature="626:788" placeholder="INSERT INTO PSVs... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/model/DadosPSVGrafico.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6101695">
           <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowRegisterDataPSVs.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5601504">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.549195">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <marker date="1461178966531" expanded="true" signature="1002:1164" placeholder="INSERT INTO DadosPSV... " />
-            <marker date="1461178966531" expanded="true" signature="1497:1521" placeholder="select nomeP... PSVs" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1337,41 +1310,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/model/PSVs.java">
+    <entry file="file://$PROJECT_DIR$/src/br/com/model/DadosPSV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30508474">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.2440678">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#257#258#0" expanded="false" />
+            <element signature="e#287#288#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/model/DadosPSV.java">
+    <entry file="file://$PROJECT_DIR$/src/br/com/model/PSVs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14576271">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.18305084">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding>
+            <element signature="e#198#199#0" expanded="true" />
+            <element signature="e#226#227#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.8.0_77/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="1768" column="0" selection-start-line="1768" selection-start-column="0" selection-end-line="1768" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1657" column="0" selection-start-line="1657" selection-start-column="0" selection-end-line="1657" selection-end-column="0" />
+          <folding>
+            <element signature="e#66933#66934#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/jdk1.8.0_77/javafx-src.zip!/javafx/scene/control/MenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="462" column="0" selection-start-line="462" selection-start-column="0" selection-end-line="462" selection-end-column="0" />
+          <folding>
+            <element signature="e#15818#15819#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/jdk1.8.0_77/javafx-src.zip!/javafx/event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/jdk1.8.0_77/javafx-src.zip!/javafx/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33240998">
+          <caret line="2494" column="0" selection-start-line="2494" selection-start-column="0" selection-end-line="2494" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowRegisterDataPSVs.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.086207">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67955804">
-          <caret line="154" column="47" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="59" selection-start-line="55" selection-start-column="8" selection-end-line="56" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1070#1086#0" expanded="true" />
-            <marker date="1461233201543" expanded="true" signature="4804:4826" placeholder="select * fro... DadosPSVGrafico" />
-            <marker date="1461233201543" expanded="true" signature="4804:4840" placeholder="select * fro... DadosPSV" />
-            <marker date="1461233201543" expanded="true" signature="4804:4842" placeholder="select * fro... DadosPSV" />
-            <marker date="1461233201543" expanded="true" signature="4804:4871" placeholder="select * fro... DadosPSV" />
-            <marker date="1461233201543" expanded="true" signature="4907:4976" placeholder="select nomeP... PSVs" />
-            <marker date="1461233201543" expanded="true" signature="6656:6678" placeholder="select idPSV... PSVs" />
+            <marker date="1461248444362" expanded="true" signature="4813:4835" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1461248444362" expanded="true" signature="4813:4849" placeholder="select * fro... DadosPSV" />
+            <marker date="1461248444362" expanded="true" signature="4813:4851" placeholder="select * fro... DadosPSV" />
+            <marker date="1461248444362" expanded="true" signature="4813:4880" placeholder="select * fro... DadosPSV" />
+            <marker date="1461248444362" expanded="true" signature="4916:4985" placeholder="select nomeP... PSVs" />
+            <marker date="1461248444362" expanded="true" signature="6605:6627" placeholder="select idPSV... PSVs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="111" selection-end-column="9" />
+          <folding>
+            <element signature="e#602#608#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+            <marker date="1461248418637" expanded="true" signature="981:1143" placeholder="INSERT INTO DadosPSV... " />
+            <marker date="1461248418637" expanded="true" signature="1476:1506" placeholder="select nomeP... PSVs" />
+            <marker date="1461248418637" expanded="true" signature="4069:4237" placeholder="INSERT INTO DadosPSV... " />
+            <marker date="1461248418637" expanded="true" signature="4069:4241" placeholder="INSERT INTO DadosPSV... " />
+            <marker date="1461248418637" expanded="true" signature="4069:4270" placeholder="INSERT INTO PSVs... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterPSVsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14917128">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <marker date="1461248681622" expanded="true" signature="919:968" placeholder="INSERT INTO PSVs... " />
+            <marker date="1461248681622" expanded="true" signature="919:1033" placeholder="INSERT INTO PSVs... " />
+            <marker date="1461248681622" expanded="true" signature="919:1034" placeholder="INSERT INTO PSVs... " />
+            <marker date="1461248681622" expanded="true" signature="919:1081" placeholder="INSERT INTO PSVs... " />
           </folding>
         </state>
       </provider>
