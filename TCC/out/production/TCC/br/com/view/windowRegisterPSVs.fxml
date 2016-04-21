@@ -41,7 +41,7 @@
                   <Label layoutX="14.0" layoutY="82.0" text="Descrição da PSV" AnchorPane.leftAnchor="14.0" />
                   <TextField fx:id="txtNomeDaPSV" layoutX="14.0" layoutY="42.0" prefHeight="26.0" prefWidth="272.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
                   <TextArea fx:id="txtDescricaoPSV" layoutX="14.0" layoutY="109.0" prefHeight="116.0" prefWidth="272.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-                  <Button fx:id="btnCadastrarPSV" layoutX="204.0" layoutY="231.0" mnemonicParsing="false" text="Cadastrar" AnchorPane.rightAnchor="14.0" />
+                  <Button fx:id="btnCadastrarPSV" layoutX="204.0" layoutY="231.0" mnemonicParsing="false" onAction="#insereDadosPSVNoDB" text="Cadastrar" AnchorPane.rightAnchor="14.0" />
                </children>
             </AnchorPane>
          </center>
