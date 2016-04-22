@@ -83,6 +83,7 @@ public class windowGraphController {
     }
 
     private void plotParametrosPSVUsuario(){
+        verificarInserirDadosUsuarioDB();
         //remove as series anteriores
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
@@ -100,6 +101,30 @@ public class windowGraphController {
         graphWindow.getLegendSide();
     }
 
+    private void verificarInserirDadosUsuarioDB(){
+        Connection conexao = null;
+
+        String sqlVerifica = "select * from HistoricoPSV where pressaoDeAjuste = '" +
+                txtPressaoSetPSV.getText().toString() + "' and pressaoMaxima = '"+ txtPressaoMaxima.getText().toString()
+                +"' and pressaoMinima = '" + txtPressaoMinima.getText().toString() + "'";
+        ResultSet resultVerifica = null;
+        try {
+            conexao = ConexaoDB.conectar();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            resultVerifica = conexao.createStatement().executeQuery(sqlVerifica);
+            if(!resultVerifica.next()){
+                String sqlInsereNoDBHistoricoPSV = "INSERT INTO HistoricoPSV (pressaoDeAjuste, pressaoMaxima, " +
+                        "pressaoMinima, estadoPSV) VALUES ( '"+txtPressaoSetPSV.getText().toString() + "', '" +
+                        txtPressaoMaxima.getText().toString() + "', '" + txtPressaoMinima.getText().toString() + "', '')";
+                conexao.createStatement().executeUpdate(sqlInsereNoDBHistoricoPSV);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void pegandoOsDados(){
         Connection conexao;
         pegaMaiorTempo = 0d;
