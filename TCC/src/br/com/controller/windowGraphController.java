@@ -60,6 +60,7 @@ public class windowGraphController {
                 if((Double.valueOf(txtPressaoMaxima.getText().toString()) > Double.valueOf(txtPressaoSetPSV.getText().toString())) &&
                         (Double.valueOf(txtPressaoSetPSV.getText().toString())> Double.valueOf(txtPressaoMinima.getText().toString()))){
 
+                    //graphWindow.getData().clear();
                     plotParametrosPSVUsuario();
 
                 }
@@ -82,18 +83,20 @@ public class windowGraphController {
     }
 
     private void plotParametrosPSVUsuario(){
-        //creating the chart
-        //series.setName("Pontos da PSV sem interpolação!");
-        pegandoOsDados();
-        //graphWindow.setLegendVisible(false);
+        //remove as series anteriores
+        for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
+        }
 
+        pegandoOsDados();
+
+        //depois remover os dados do usuário para deixar apenas linhas pretas, sem ser series
         graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
 
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
-            graphWindow.getData().addAll(listaDeSeriesDasPSVs.get(i));
+            graphWindow.getData().add(listaDeSeriesDasPSVs.get(i));
         }
 
-        //graphWindow.setData(lineChartData);
         graphWindow.getLegendSide();
     }
 
@@ -102,7 +105,6 @@ public class windowGraphController {
         pegaMaiorTempo = 0d;
         pegaMaiorPressao = 0d;
         DadosPSV dadosPSV = new DadosPSV();
-        //series.getData().clear();
         seriesSetPressaoPSV.getData().clear();
         seriesMaxPressaoPSV.getData().clear();
         seriesMinPressaoPSV.getData().clear();
