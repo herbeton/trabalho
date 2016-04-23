@@ -12,6 +12,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -35,6 +36,7 @@ public class windowGraphController {
     public Double pegaMaiorPressao;
     public ArrayList<XYChart.Series> listaDeSeriesDasPSVs = new ArrayList<XYChart.Series>();
     public List listaDeIdPSVs = new ArrayList<Integer>();
+    public Tab tablePanePSVs;
     private int idEstado = 0;
 
 
@@ -163,6 +165,7 @@ public class windowGraphController {
             Double pressaoAnteriroPSV = 0d;
             Double pressaoAtualPSV;
             String estadoPSV = "";
+            boolean insereUmaVezAPressao = true;
             try {
                 resultSet = conexao.createStatement().executeQuery(sql);
                 resultadoNomePSV = conexao.createStatement().executeQuery(sqlNomePSV);
@@ -175,6 +178,10 @@ public class windowGraphController {
                 if(resultSet.next()) {//caso exista dados, pode passar
                     while (resultSet.next()) {//faz para cada PSV
                         pressaoAtualPSV = resultSet.getDouble(2);
+                        if(insereUmaVezAPressao){
+                            pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
+                            insereUmaVezAPressao = false;
+                        }
                         series.getData().add(new XYChart.Data(resultSet.getDouble(3), resultSet.getDouble(2)));//tempoXpressao
                         if (resultSet.getDouble(3) > pegaMaiorTempo) {
                             pegaMaiorTempo = resultSet.getDouble(3);
@@ -190,6 +197,7 @@ public class windowGraphController {
                         inserirEstadoPSVNoDB(estadoPSV, conexao);
                         inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, dadosPSV);
                         isenrirDadosPSVNoDB(conexao, dadosPSV, iDPSV);
+                        pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
                     }
                     series.setName(nomePSVAtual);
                     listaDeSeriesDasPSVs.add(series);
@@ -279,21 +287,29 @@ public class windowGraphController {
 
     public String analisaEstadoPSV(Double pressaoAtualPSV, Double pressaoAnteriroPSV){
         String estadoPSV = "";
-        if((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1){
+        Double pressaoMaxima = Double.parseDouble(txtPressaoMaxima.getText().toString());
+        Double pressaoMinima = Double.parseDouble(txtPressaoMinima.getText().toString());
+        Double pressaoDeAjuste = Double.parseDouble(txtPressaoSetPSV.getText().toString());
+        if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) <= 0.5)){
             estadoPSV = "A PSV abriu!";
         }
-        else if(pressaoAtualPSV == Double.parseDouble(txtPressaoMaxima.getText().toString())){
+
+        else if(pressaoAtualPSV == pressaoMaxima){
             estadoPSV = "A PSV está com sua pressão máxima!";
         }
-        else if(pressaoAtualPSV > Double.parseDouble(txtPressaoMaxima.getText().toString())){
+        else if(pressaoAtualPSV > pressaoMaxima){
             estadoPSV = "A PSV está acima de sua pressão máxima!";
         }
-        else if(pressaoAtualPSV == Double.parseDouble(txtPressaoMinima.getText().toString())){
+        else if(pressaoAtualPSV == pressaoMinima){
             estadoPSV = "A PSV está com sua pressão mínima! ";
         }
-        else if(pressaoAtualPSV < Double.parseDouble(txtPressaoMinima.getText().toString())){
+        else if(pressaoAtualPSV < pressaoMinima){
             estadoPSV = "A PSV está abaixo de sua pressão mínima!";
         }
+        else{
+            estadoPSV = "A PSV não abriu!";
+        }
+
         return estadoPSV;
     }
 
