@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutX="43.0" layoutY="29.0" prefHeight="300.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Arquivo">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea editable="false" layoutX="30.0" layoutY="132.0" prefHeight="132.0" prefWidth="200.0" promptText="Desenvolvido por Herbeton Farias Bispo, Estudante de Engenharia de Computação da UFRN, com o intuito de defender o seu trabalho de conclusão de curso(TCC). GitHub: www.github.com/herbeton " text="Desenvolvido por Herbeton Farias Bispo, Estudante de Engenharia de Computação da UFRN, com o intuito de defender o seu trabalho de conclusão de curso(TCC). GitHub: www.github.com/herbeton " wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="140.0" fitWidth="300.0" layoutX="89.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="89.66666412353516" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../image/Imagem1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

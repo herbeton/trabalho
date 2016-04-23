@@ -4,9 +4,14 @@ import br.com.model.ConexaoDB;
 import br.com.model.DadosPSVGrafico;
 import br.com.model.PSVs;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -126,5 +131,19 @@ public class windowRegisterDataPSVsController {
         catch (Exception e){
 
         }
+    }
+
+    public void openWindowAbout(){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("br/com/view/windowAbout.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Sobre este trabalho!");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

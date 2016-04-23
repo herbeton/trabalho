@@ -2,11 +2,16 @@ package br.com.controller;
 
 import br.com.model.ConexaoDB;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -43,5 +48,19 @@ public class windowRegisterPSVsController {
         catch (Exception e){
 
         }
+    }
+
+    public void openWindowAbout(){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("br/com/view/windowAbout.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Sobre este trabalho!");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

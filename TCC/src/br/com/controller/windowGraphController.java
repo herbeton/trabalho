@@ -427,6 +427,20 @@ public class windowGraphController {
         stage.show();
     }
 
+    public void openWindowAbout(){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("br/com/view/windowAbout.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Sobre este trabalho!");
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     public void abrirCadastroPSV(ActionEvent event) throws IOException {
         Parent root;
         try {
