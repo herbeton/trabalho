@@ -35,6 +35,7 @@ public class windowGraphController {
     public Double pegaMaiorPressao;
     public ArrayList<XYChart.Series> listaDeSeriesDasPSVs = new ArrayList<XYChart.Series>();
     public List listaDeIdPSVs = new ArrayList<Integer>();
+    private int idEstado = 0;
 
 
     @FXML LineChart<Number, Number> graphWindow;
@@ -92,12 +93,12 @@ public class windowGraphController {
         pegandoOsDados();
 
         //depois remover os dados do usuário para deixar apenas linhas pretas, sem ser series
-        graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
+
 
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeSeriesDasPSVs.get(i));
         }
-
+        graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV, serieInformacao);
         graphWindow.getLegendSide();
     }
 
@@ -117,8 +118,8 @@ public class windowGraphController {
             resultVerifica = conexao.createStatement().executeQuery(sqlVerifica);
             if(!resultVerifica.next()){
                 String sqlInsereNoDBHistoricoPSV = "INSERT INTO HistoricoPSV (pressaoDeAjuste, pressaoMaxima, " +
-                        "pressaoMinima, estadoPSV) VALUES ( '"+txtPressaoSetPSV.getText().toString() + "', '" +
-                        txtPressaoMaxima.getText().toString() + "', '" + txtPressaoMinima.getText().toString() + "', '')";
+                        "pressaoMinima) VALUES ( '"+txtPressaoSetPSV.getText().toString() + "', '" +
+                        txtPressaoMaxima.getText().toString() + "', '" + txtPressaoMinima.getText().toString() + "')";
                 conexao.createStatement().executeUpdate(sqlInsereNoDBHistoricoPSV);
             }
         } catch (SQLException e) {
@@ -151,12 +152,17 @@ public class windowGraphController {
     }
 
     public void setListaDeSeriesDasPSVs(Connection conexao, int quantPSVs, DadosPSV dadosPSV){
+        Integer iDPSV;
         for(int i = 0; i < quantPSVs ; i++) {
+            iDPSV = (Integer) listaDeIdPSVs.get(i);
             String sql = "select * from DadosPSV WHERE idPSV = '" + listaDeIdPSVs.get(i) + "'";
             String sqlNomePSV = "select nomePSV from PSVs where idPSV = '" + listaDeIdPSVs.get(i) + "'";
             String nomePSVAtual = "";
             ResultSet resultadoNomePSV = null;
             ResultSet resultSet = null;
+            Double pressaoAnteriroPSV = 0d;
+            Double pressaoAtualPSV;
+            String estadoPSV = "";
             try {
                 resultSet = conexao.createStatement().executeQuery(sql);
                 resultadoNomePSV = conexao.createStatement().executeQuery(sqlNomePSV);
@@ -167,7 +173,8 @@ public class windowGraphController {
             }
             try {
                 if(resultSet.next()) {//caso exista dados, pode passar
-                    while (resultSet.next()) {
+                    while (resultSet.next()) {//faz para cada PSV
+                        pressaoAtualPSV = resultSet.getDouble(2);
                         series.getData().add(new XYChart.Data(resultSet.getDouble(3), resultSet.getDouble(2)));//tempoXpressao
                         if (resultSet.getDouble(3) > pegaMaiorTempo) {
                             pegaMaiorTempo = resultSet.getDouble(3);
@@ -177,6 +184,12 @@ public class windowGraphController {
                             dadosPSV.setPressaoPSV(pegaMaiorPressao);
                             dadosPSV.setTempoPSV(resultSet.getDouble(3));
                         }
+                        dadosPSV.setPressaoPSV(resultSet.getDouble(2));
+                        dadosPSV.setTempoPSV(resultSet.getDouble(3));
+                        estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV);
+                        inserirEstadoPSVNoDB(estadoPSV, conexao);
+                        inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, dadosPSV);
+                        isenrirDadosPSVNoDB(conexao, dadosPSV, iDPSV);
                     }
                     series.setName(nomePSVAtual);
                     listaDeSeriesDasPSVs.add(series);
@@ -185,6 +198,70 @@ public class windowGraphController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void isenrirDadosPSVNoDB(Connection conexao, DadosPSV dadosPSV, Integer iDPSV) {
+        int idHistorico = 0;
+        String sqlPegaIdHistorico = "select idHistoricoPSV from HistoricoPSV where pressaoDeAjuste = '"+txtPressaoSetPSV.getText().toString()
+                +"' and pressaoMaxima = '"+txtPressaoMaxima.getText().toString()+"' and pressaoMinima = '"+
+                txtPressaoMinima.getText().toString()+"' and idEstadoPSV ='" + idEstado + "'";
+
+
+        ResultSet resultSelecionaEstadoPSV = null;
+        ResultSet resultVerificaDadosPSV = null;
+        try {
+            resultSelecionaEstadoPSV = conexao.createStatement().executeQuery(sqlPegaIdHistorico);
+            resultSelecionaEstadoPSV.next();
+            idHistorico = resultSelecionaEstadoPSV.getInt(1);
+            String sqlVerificaDadosPSV = "select * from DadosPSV where IdPSV = '" + iDPSV + "' and pressaoPSV = '" +
+                    dadosPSV.getPressaoPSV() + "' and tempoPSV = '" + dadosPSV.getTempoPSV() + "' and idHistoricoPSV = '" +
+                    idHistorico + "'";
+            String sqlInsereDadosPSV = "insert into DadosPSV (pressaoPSV, tempoPSV, idPSV, idHistoricoPSV) VALUES ( '" +
+                    dadosPSV.getPressaoPSV() + "','" + dadosPSV.getTempoPSV() + "','" + iDPSV + "','" + idHistorico + "')";
+            resultVerificaDadosPSV = conexao.createStatement().executeQuery(sqlVerificaDadosPSV);
+            if(!resultVerificaDadosPSV.next()){
+                conexao.createStatement().executeUpdate(sqlInsereDadosPSV);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void inserirHistoricoPSVNoDB(String estadoPSV, Connection conexao, Integer indiceIDPSV, DadosPSV dadosPSV) {
+        String sqlSelectEstadoIdPSV = "select IdEstadoPSV from EstadoHistoricoPSV where EstadoPSV = '" + estadoPSV + "'";
+
+
+        try {
+            ResultSet resultSelecionaEstadoPSV = conexao.createStatement().executeQuery(sqlSelectEstadoIdPSV);
+            resultSelecionaEstadoPSV.next();
+            idEstado = resultSelecionaEstadoPSV.getInt(1);
+            String sqlVerificaHistoricoPSV = "select * from HistoricoPSV where pressaoDeAjuste = '" +
+                    txtPressaoSetPSV.getText().toString() + "' and pressaoMaxima = '" + txtPressaoMaxima.getText().toString()
+                    + "' and pressaoMinima = '" + txtPressaoMinima.getText().toString() + "' and idEstadoPSV = '" +  idEstado + "'" ;
+            String sqlInsereHistoricoPSV = "insert into HistoricoPSV (pressaoDeAjuste, pressaoMaxima, pressaoMinima, idEstadoPSV) values ('"
+                    + txtPressaoSetPSV.getText().toString() + "' , '" + txtPressaoMaxima.getText().toString() + "','" +
+                    txtPressaoMinima.getText().toString() + "','" + idEstado + "')";
+            ResultSet resultVerificaHistoricoPSV = conexao.createStatement().executeQuery(sqlVerificaHistoricoPSV);
+            if(!resultVerificaHistoricoPSV.next()){
+                conexao.createStatement().executeUpdate(sqlInsereHistoricoPSV);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void inserirEstadoPSVNoDB(String estadoPSV, Connection conexao) {
+        String sqlVerificaEstadoPSV = "select * from EstadoHistoricoPSV where EstadoPSV = '" + estadoPSV + "'";
+        String sqlInsertEstadoPSV = "insert into EstadoHistoricoPSV (EstadoPSV) values ('" + estadoPSV + "')";
+        try {
+            ResultSet resultVerificaEstadoPSV = conexao.createStatement().executeQuery(sqlVerificaEstadoPSV);
+            if(!resultVerificaEstadoPSV.next()){
+                conexao.createStatement().executeUpdate(sqlInsertEstadoPSV);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -198,6 +275,26 @@ public class windowGraphController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String analisaEstadoPSV(Double pressaoAtualPSV, Double pressaoAnteriroPSV){
+        String estadoPSV = "";
+        if((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1){
+            estadoPSV = "A PSV abriu!";
+        }
+        else if(pressaoAtualPSV == Double.parseDouble(txtPressaoMaxima.getText().toString())){
+            estadoPSV = "A PSV está com sua pressão máxima!";
+        }
+        else if(pressaoAtualPSV > Double.parseDouble(txtPressaoMaxima.getText().toString())){
+            estadoPSV = "A PSV está acima de sua pressão máxima!";
+        }
+        else if(pressaoAtualPSV == Double.parseDouble(txtPressaoMinima.getText().toString())){
+            estadoPSV = "A PSV está com sua pressão mínima! ";
+        }
+        else if(pressaoAtualPSV < Double.parseDouble(txtPressaoMinima.getText().toString())){
+            estadoPSV = "A PSV está abaixo de sua pressão mínima!";
+        }
+        return estadoPSV;
     }
 
     public void testeInformacaoPSV(DadosPSV dadosPSV){
