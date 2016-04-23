@@ -1,9 +1,6 @@
 package br.com.controller;
 
-import br.com.model.ConexaoDB;
-import br.com.model.DadosPSV;
-import br.com.model.PSVs;
-import br.com.model.PSVsLista;
+import br.com.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,8 +39,17 @@ public class windowGraphController {
     public TableColumn<PSVsLista, String> tablePSVsNome;
     public TableColumn<PSVsLista, String> tablePSVsDescricao;
     public TabPane tablePane;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorPSV;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorPAtual;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorTAtual;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorPMaxima;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorPAjuste;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorPMinima;
+    public TableColumn<HistoriadorLista, String> columnHistoriadorEstado;
+    public TableView<HistoriadorLista> tableHistorian;
     private int idEstado = 0;
     private ObservableList<PSVsLista> psvsData = FXCollections.observableArrayList();
+    private ObservableList<HistoriadorLista> historiadorData = FXCollections.observableArrayList();
 
 
     @FXML LineChart<Number, Number> graphWindow;
@@ -61,9 +67,18 @@ public class windowGraphController {
 
     @FXML
     private void initialize() {
+        //para a tabela de PSVs da view
         tablePSVsNome.setCellValueFactory(cellData -> cellData.getValue().getNomePSV());
         tablePSVsDescricao.setCellValueFactory(cellData -> cellData.getValue().getDescricaoPSV());
 
+        //para a tabela de Historiados de PSVs da view
+        columnHistoriadorPSV.setCellValueFactory(cellData -> cellData.getValue().nomePSVProperty());
+        columnHistoriadorPAtual.setCellValueFactory(cellData -> cellData.getValue().pressaoPSVProperty());
+        columnHistoriadorTAtual.setCellValueFactory(cellData -> cellData.getValue().tempoPSVProperty());
+        columnHistoriadorPMaxima.setCellValueFactory(cellData -> cellData.getValue().pressaoMaximaProperty());
+        columnHistoriadorPAjuste.setCellValueFactory(cellData -> cellData.getValue().pressaoDeAjusteProperty());
+        columnHistoriadorPMinima.setCellValueFactory(cellData -> cellData.getValue().pressaoMinimaProperty());
+        columnHistoriadorEstado.setCellValueFactory(cellData -> cellData.getValue().estadoPSVProperty());
     }
 
 
@@ -80,6 +95,8 @@ public class windowGraphController {
                     plotParametrosPSVUsuario();
 
                     adicionaElementosListaPSVs();
+
+                    adicionaElementosListaHistoriador();
 
                 }
                 else{
@@ -98,6 +115,35 @@ public class windowGraphController {
         System.out.println("Maxima: " + txtPressaoMaxima.getText().matches("\\d*"));
         System.out.println("Minima: " + txtPressaoMinima.getText().matches("\\d*"));
         System.out.println("");
+    }
+
+    private void adicionaElementosListaHistoriador() {
+        selecionaDadosListaHistoriador();
+        tableHistorian.setItems(historiadorData);
+    }
+
+    private void selecionaDadosListaHistoriador() {
+        Connection conexao = null;
+        String sql = "select PSVS.nomePSV, DPSV.pressaoPSV, DPSV.tempoPSV, HPSV.pressaoDeAjuste, HPSV.pressaoMaxima," +
+               " HPSV.pressaoMinima, EHPSV.estadoPSV from PSVs PSVS, DadosPSV DPSV, HistoricoPSV HPSV , EstadoHistoricoPSV EHPSV";
+        ResultSet resultVerifica = null;
+        try {
+            conexao = ConexaoDB.conectar();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            resultVerifica = conexao.createStatement().executeQuery(sql);
+            while (resultVerifica.next()){
+                historiadorData.add(new HistoriadorLista(resultVerifica.getString(1),resultVerifica.getString(2),
+                        resultVerifica.getString(3), resultVerifica.getString(4), resultVerifica.getString(5),
+                        resultVerifica.getString(6), resultVerifica.getString(7)));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void adicionaElementosListaPSVs() {
@@ -157,6 +203,7 @@ public class windowGraphController {
         seriesMinPressaoPSV.getData().clear();
         listaDeSeriesDasPSVs.clear();
         listaDeIdPSVs.clear();
+        psvsData.clear();
         try {
             conexao = ConexaoDB.conectar();
 
