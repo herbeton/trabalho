@@ -2,6 +2,10 @@ package br.com.controller;
 
 import br.com.model.ConexaoDB;
 import br.com.model.DadosPSV;
+import br.com.model.PSVs;
+import br.com.model.PSVsLista;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +15,7 @@ import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.swing.*;
@@ -36,8 +38,12 @@ public class windowGraphController {
     public Double pegaMaiorPressao;
     public ArrayList<XYChart.Series> listaDeSeriesDasPSVs = new ArrayList<XYChart.Series>();
     public List listaDeIdPSVs = new ArrayList<Integer>();
-    public Tab tablePanePSVs;
+    public TableView<PSVsLista> tablePsvs;
+    public TableColumn<PSVsLista, String> tablePSVsNome;
+    public TableColumn<PSVsLista, String> tablePSVsDescricao;
+    public TabPane tablePane;
     private int idEstado = 0;
+    private ObservableList<PSVsLista> psvsData = FXCollections.observableArrayList();
 
 
     @FXML LineChart<Number, Number> graphWindow;
@@ -53,6 +59,13 @@ public class windowGraphController {
     XYChart.Series seriesMinPressaoPSV = new XYChart.Series();
     XYChart.Series serieInformacao = new XYChart.Series();
 
+    @FXML
+    private void initialize() {
+        tablePSVsNome.setCellValueFactory(cellData -> cellData.getValue().getNomePSV());
+        tablePSVsDescricao.setCellValueFactory(cellData -> cellData.getValue().getDescricaoPSV());
+
+    }
+
 
     public void checkDatasPSVPlot(ActionEvent event) {
         System.out.println("Valor: " + txtPressaoSetPSV.getText().toString());
@@ -65,6 +78,8 @@ public class windowGraphController {
 
                     //graphWindow.getData().clear();
                     plotParametrosPSVUsuario();
+
+                    adicionaElementosListaPSVs();
 
                 }
                 else{
@@ -83,6 +98,10 @@ public class windowGraphController {
         System.out.println("Maxima: " + txtPressaoMaxima.getText().matches("\\d*"));
         System.out.println("Minima: " + txtPressaoMinima.getText().matches("\\d*"));
         System.out.println("");
+    }
+
+    private void adicionaElementosListaPSVs() {
+        tablePsvs.setItems(psvsData);
     }
 
     private void plotParametrosPSVUsuario(){
@@ -274,11 +293,12 @@ public class windowGraphController {
     }
 
     public void setListaDeIdPSVs(Connection conexao){
-        String sql = "select idPSV from PSVs";
+        String sql = "select idPSV, nomePSV, descricaoPSV from PSVs";
         try {
             ResultSet resultSet = conexao.createStatement().executeQuery(sql);
             while (resultSet.next()){
                 listaDeIdPSVs.add(resultSet.getInt(1));
+                psvsData.add(new PSVsLista(resultSet.getString(2), resultSet.getString(3)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.controller.windowGraphController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.controller.windowGraphController">
    <children>
       <BorderPane layoutX="223.0" layoutY="142.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -84,17 +85,20 @@
                               <Button fx:id="btnPlotGraph" layoutY="151.0" mnemonicParsing="false" onAction="#checkDatasPSVPlot" prefHeight="14.0" prefWidth="102.0" text="Plot" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
-                        <TabPane fx:id="tablePane" prefHeight="173.0" prefWidth="102.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane fx:id="tablePane" prefHeight="426.0" prefWidth="138.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab fx:id="tablePanePSVs" text="PSV's">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="162.0" prefWidth="102.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="129.0">
                                        <children>
-                                          <TableView fx:id="tablePsvs" layoutX="-60.0" layoutY="-60.0" prefHeight="140.0" prefWidth="129.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tablePsvs" layoutX="-60.0" layoutY="-60.0" prefHeight="118.0" prefWidth="137.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn fx:id="tablePSVsNome" minWidth="50.0" prefWidth="75.0" text="Nome" />
                                               <TableColumn fx:id="tablePSVsDescricao" minWidth="50.0" prefWidth="250.0" text="Descrição" />
                                             </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
                                           </TableView>
                                        </children>
                                     </AnchorPane>
@@ -106,16 +110,33 @@
                                        <children>
                                           <TableView fx:id="tableHistorian" layoutX="-42.0" layoutY="-51.0" prefHeight="140.0" prefWidth="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                              <TableColumn prefWidth="75.0" text="C1" />
-                                              <TableColumn prefWidth="75.0" text="C2" />
+                                              <TableColumn prefWidth="75.0" text="PSV" />
+                                              <TableColumn prefWidth="75.0" text="PAtual" />
+                                                <TableColumn prefWidth="75.0" text="TAtual" />
+                                                <TableColumn prefWidth="75.0" text="PMaxima" />
+                                                <TableColumn prefWidth="75.0" text="PAjuste" />
+                                                <TableColumn prefWidth="75.0" text="PMinima" />
+                                                <TableColumn prefWidth="75.0" text="Estado" />
                                             </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
                                           </TableView>
                                        </children>
                                     </AnchorPane>
                               </content>
                             </Tab>
                           </tabs>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </TabPane>
+                        <AnchorPane prefHeight="39.0" prefWidth="137.0">
+                           <children>
+                              <Button layoutX="66.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="Remover" AnchorPane.rightAnchor="0.0" />
+                              <Button layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="57.0" text="Editar" AnchorPane.rightAnchor="80.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </VBox>
               </items>
