@@ -125,7 +125,9 @@ public class windowGraphController {
     private void selecionaDadosListaHistoriador() {
         Connection conexao = null;
         String sql = "select PSVS.nomePSV, DPSV.pressaoPSV, DPSV.tempoPSV, HPSV.pressaoDeAjuste, HPSV.pressaoMaxima," +
-               " HPSV.pressaoMinima, EHPSV.estadoPSV from PSVs PSVS, DadosPSV DPSV, HistoricoPSV HPSV , EstadoHistoricoPSV EHPSV";
+               " HPSV.pressaoMinima, EHPSV.estadoPSV from PSVs PSVS, DadosPSV DPSV, HistoricoPSV HPSV , EstadoHistoricoPSV EHPSV " +
+                "where PSVS.idPSV = DPSV.idPSV and DPSV.idHistoricoPSV = HPSV.idHistoricoPSV\n" +
+                "and HPSV.idEstadoPSV = EHPSV.idEstadoPSV";
         ResultSet resultVerifica = null;
         try {
             conexao = ConexaoDB.conectar();
@@ -204,6 +206,7 @@ public class windowGraphController {
         listaDeSeriesDasPSVs.clear();
         listaDeIdPSVs.clear();
         psvsData.clear();
+        historiadorData.clear();
         try {
             conexao = ConexaoDB.conectar();
 
