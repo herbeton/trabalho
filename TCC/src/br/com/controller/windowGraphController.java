@@ -215,7 +215,7 @@ public class windowGraphController {
             int quantPSVs = listaDeIdPSVs.size();
             //adicionando dados a serie
             setListaDeSeriesDasPSVs(conexao, quantPSVs, dadosPSV);
-            testeInformacaoPSV(dadosPSV);
+            //testeInformacaoPSV(dadosPSV);
             plotParameterSetMaxMinPSV();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -233,6 +233,8 @@ public class windowGraphController {
             ResultSet resultSet = null;
             Double pressaoAnteriroPSV = 0d;
             Double pressaoAtualPSV;
+            Double tempoAtualPSV;
+            Double pressaoFuturaPSV = 0d;
             String estadoPSV = "";
             boolean insereUmaVezAPressao = true;
             try {
@@ -244,27 +246,35 @@ public class windowGraphController {
                 e.printStackTrace();
             }
             try {
-                if(resultSet.next()) {//caso exista dados, pode passar
-                    while (resultSet.next()) {//faz para cada PSV
+                Boolean verificaSeExiste = resultSet.next();
+                if(verificaSeExiste) {//caso exista dados, pode passar
+                    while (verificaSeExiste) {//faz para cada PSV
                         pressaoAtualPSV = resultSet.getDouble(2);
+                        tempoAtualPSV = resultSet.getDouble(3);
+                        verificaSeExiste = resultSet.next();
+                        if(!verificaSeExiste){
+                            break;
+                        }
+                        pressaoFuturaPSV = resultSet.getDouble(2);
                         if(insereUmaVezAPressao){
                             pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
                             insereUmaVezAPressao = false;
                         }
-                        series.getData().add(new XYChart.Data(resultSet.getDouble(3), resultSet.getDouble(2)));//tempoXpressao
-                        if (resultSet.getDouble(3) > pegaMaiorTempo) {
-                            pegaMaiorTempo = resultSet.getDouble(3);
+                        series.getData().add(new XYChart.Data(tempoAtualPSV, pressaoAtualPSV));//tempoXpressao
+                        //retirar depois que colocar os valores do usuário como linhas pretas no gráfico
+                        if (tempoAtualPSV > pegaMaiorTempo) {
+                            pegaMaiorTempo = tempoAtualPSV;
                         }
-                        if (resultSet.getDouble(3) > pegaMaiorPressao) {
-                            pegaMaiorPressao = resultSet.getDouble(2);
+                        if (pressaoAtualPSV > pegaMaiorPressao) {
+                            pegaMaiorPressao = pressaoAtualPSV;
                             dadosPSV.setPressaoPSV(pegaMaiorPressao);
-                            dadosPSV.setTempoPSV(resultSet.getDouble(3));
+                            dadosPSV.setTempoPSV(tempoAtualPSV);
                         }
-                        dadosPSV.setPressaoPSV(resultSet.getDouble(2));
-                        dadosPSV.setTempoPSV(resultSet.getDouble(3));
-                        estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV);
+                        dadosPSV.setPressaoPSV(pressaoAtualPSV);
+                        dadosPSV.setTempoPSV(tempoAtualPSV);
+                        estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV, pressaoFuturaPSV);
                         inserirEstadoPSVNoDB(estadoPSV, conexao);
-                        inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, dadosPSV);
+                        inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, pressaoAnteriroPSV);
                         isenrirDadosPSVNoDB(conexao, dadosPSV, iDPSV);
                         pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
                     }
@@ -277,6 +287,7 @@ public class windowGraphController {
             }
         }
     }
+
 
     private void isenrirDadosPSVNoDB(Connection conexao, DadosPSV dadosPSV, Integer iDPSV) {
         int idHistorico = 0;
@@ -306,7 +317,7 @@ public class windowGraphController {
 
     }
 
-    private void inserirHistoricoPSVNoDB(String estadoPSV, Connection conexao, Integer indiceIDPSV, DadosPSV dadosPSV) {
+    private void inserirHistoricoPSVNoDB(String estadoPSV, Connection conexao, Integer indiceIDPSV, Double pressaoAnteriroPSV) {
         String sqlSelectEstadoIdPSV = "select IdEstadoPSV from EstadoHistoricoPSV where EstadoPSV = '" + estadoPSV + "'";
 
 
@@ -355,12 +366,14 @@ public class windowGraphController {
         }
     }
 
-    public String analisaEstadoPSV(Double pressaoAtualPSV, Double pressaoAnteriroPSV){
+    public String analisaEstadoPSV(Double pressaoAtualPSV, Double pressaoAnteriroPSV, Double pressaoFuturaPSV){
         String estadoPSV = "";
         Double pressaoMaxima = Double.parseDouble(txtPressaoMaxima.getText().toString());
         Double pressaoMinima = Double.parseDouble(txtPressaoMinima.getText().toString());
         Double pressaoDeAjuste = Double.parseDouble(txtPressaoSetPSV.getText().toString());
-        if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) <= 0.5)){
+        if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d))
+                <= 0.5) || ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) >= 0.1) &&
+                ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) <= 0.5)){
             estadoPSV = "A PSV abriu!";
         }
 
