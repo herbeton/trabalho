@@ -34,6 +34,7 @@ public class windowGraphController {
     public Double pegaMaiorTempo;
     public Double pegaMaiorPressao;
     public ArrayList<XYChart.Series> listaDeSeriesDasPSVs = new ArrayList<XYChart.Series>();
+    public ArrayList<XYChart.Series> listaDeEstadosDeSeriesDasPSVs = new ArrayList<XYChart.Series>();
     public List listaDeIdPSVs = new ArrayList<Integer>();
     public TableView<PSVsLista> tablePsvs;
     public TableColumn<PSVsLista, String> tablePSVsNome;
@@ -60,6 +61,7 @@ public class windowGraphController {
     final Axis yAxis = new NumberAxis();
     //definindo a série
     XYChart.Series series = new XYChart.Series();
+    XYChart.Series seriesEstado = new XYChart.Series();
     XYChart.Series seriesSetPressaoPSV = new XYChart.Series();
     XYChart.Series seriesMaxPressaoPSV = new XYChart.Series();
     XYChart.Series seriesMinPressaoPSV = new XYChart.Series();
@@ -159,15 +161,25 @@ public class windowGraphController {
             graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
         }
 
+        //remove as series anteriores referentes aos estados das psvs
+        for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().remove(listaDeEstadosDeSeriesDasPSVs.get(i));
+        }
+
         pegandoOsDados();
 
         //depois remover os dados do usuário para deixar apenas linhas pretas, sem ser series
 
-
+        //adiciona a lista de series ao grafico
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeSeriesDasPSVs.get(i));
         }
-        graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV, serieInformacao);
+
+        //adiciona a lista de estados das series ao grafico
+        for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().add(listaDeEstadosDeSeriesDasPSVs.get(i));
+        }
+        graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
         graphWindow.getLegendSide();
     }
 
@@ -204,6 +216,7 @@ public class windowGraphController {
         seriesMaxPressaoPSV.getData().clear();
         seriesMinPressaoPSV.getData().clear();
         listaDeSeriesDasPSVs.clear();
+        listaDeEstadosDeSeriesDasPSVs.clear();
         listaDeIdPSVs.clear();
         psvsData.clear();
         historiadorData.clear();
@@ -221,6 +234,7 @@ public class windowGraphController {
             e.printStackTrace();
         }
     }
+
 
     public void setListaDeSeriesDasPSVs(Connection conexao, int quantPSVs, DadosPSV dadosPSV){
         Integer iDPSV;
@@ -273,14 +287,20 @@ public class windowGraphController {
                         dadosPSV.setPressaoPSV(pressaoAtualPSV);
                         dadosPSV.setTempoPSV(tempoAtualPSV);
                         estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV, pressaoFuturaPSV);
+                        if(estadoPSV == "A PSV abriu!"){
+                            seriesEstado.getData().add(new XYChart.Data(tempoAtualPSV, pressaoAtualPSV));
+                        }
                         inserirEstadoPSVNoDB(estadoPSV, conexao);
                         inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, pressaoAnteriroPSV);
                         isenrirDadosPSVNoDB(conexao, dadosPSV, iDPSV);
                         pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
                     }
                     series.setName(nomePSVAtual);
+                    seriesEstado.setName("A " + nomePSVAtual + " abriu!");
                     listaDeSeriesDasPSVs.add(series);
+                    listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
                     series = new XYChart.Series();
+                    seriesEstado = new XYChart.Series();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
