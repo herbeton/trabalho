@@ -13,7 +13,9 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
@@ -48,17 +50,25 @@ public class windowGraphController {
     public TableColumn<HistoriadorLista, String> columnHistoriadorPMinima;
     public TableColumn<HistoriadorLista, String> columnHistoriadorEstado;
     public TableView<HistoriadorLista> tableHistorian;
+    public Line lineMaxDadosUsuario;
+    public Line lineAjusteDadosUsuario;
+    public Line lineMinDadosUsuario;
     private int idEstado = 0;
     private ObservableList<PSVsLista> psvsData = FXCollections.observableArrayList();
     private ObservableList<HistoriadorLista> historiadorData = FXCollections.observableArrayList();
+    private boolean dadosUsuariosMudaram = false;
+    private boolean dadosUsuarioUmavez = true;
+    private Double pressaoAjusteUsuario = 0d;
+    private Double pressaoMaximaeUsuario = 0d;
+    private Double pressaoMinimseUsuario = 0d;
+    private Controller controller = new Controller();
+    private static final Double lineMaxDadosUsuarioEstaticoY = 150d;//90d + 60d
+    private static final Double lineAjusteDadosUsuarioEstaticoY = 283d;//203d + 80d
+    private static final Double lineMinDadosUsuarioEstaticoY = 423d;//333d + 90d
 
 
     @FXML LineChart<Number, Number> graphWindow;
-
-    @FXML
-    private Axis xAxis= new NumberAxis();
-    @FXML
-    final Axis yAxis = new NumberAxis();
+    
     //definindo a série
     XYChart.Series series = new XYChart.Series();
     XYChart.Series seriesEstado = new XYChart.Series();
@@ -178,9 +188,25 @@ public class windowGraphController {
         //adiciona a lista de estados das series ao grafico
         for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeEstadosDeSeriesDasPSVs.get(i));
+            for(int j=0 ; j<listaDeEstadosDeSeriesDasPSVs.size(); i++){
+                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()){
+                    break;
+                }
+                if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(j))){
+                    i++;
+                }
+            }
+            lineAjusteDadosUsuario.setLayoutY(lineAjusteDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoSetPSV.getText().toString()));
+            lineMaxDadosUsuario.setLayoutY(lineMaxDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMaxima.getText().toString()));
+            lineMinDadosUsuario.setLayoutY(lineMinDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMinima.getText().toString()));
+            double hh = graphWindow.getScaleY();
+            String j ="f";
         }
-        graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
-        graphWindow.getLegendSide();
+//        if(dadosUsuariosMudaram) {
+//            graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
+//            dadosUsuariosMudaram = false;
+//        }
+
     }
 
     private void verificarInserirDadosUsuarioDB(){
@@ -250,6 +276,7 @@ public class windowGraphController {
             Double tempoAtualPSV;
             Double pressaoFuturaPSV = 0d;
             String estadoPSV = "";
+            int contDuasVezesAberturaPSV = 0;
             boolean insereUmaVezAPressao = true;
             try {
                 resultSet = conexao.createStatement().executeQuery(sql);
@@ -289,6 +316,13 @@ public class windowGraphController {
                         estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV, pressaoFuturaPSV);
                         if(estadoPSV == "A PSV abriu!"){
                             seriesEstado.getData().add(new XYChart.Data(tempoAtualPSV, pressaoAtualPSV));
+                            contDuasVezesAberturaPSV++;
+                        }
+                        if(contDuasVezesAberturaPSV == 2){
+                            seriesEstado.setName("A " + nomePSVAtual + " abriu!");
+                            listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
+                            seriesEstado = new XYChart.Series();
+                            contDuasVezesAberturaPSV = 0;
                         }
                         inserirEstadoPSVNoDB(estadoPSV, conexao);
                         inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, pressaoAnteriroPSV);
@@ -296,11 +330,8 @@ public class windowGraphController {
                         pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
                     }
                     series.setName(nomePSVAtual);
-                    seriesEstado.setName("A " + nomePSVAtual + " abriu!");
                     listaDeSeriesDasPSVs.add(series);
-                    listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
                     series = new XYChart.Series();
-                    seriesEstado = new XYChart.Series();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -433,21 +464,47 @@ public class windowGraphController {
 
     //tentar substituir depois
     public void plotParameterSetMaxMinPSV(){
-        pegaMaiorTempo = pegaMaiorTempo + 5;
-        //set PSV
-        seriesSetPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoSetPSV.getText().toString())));//tempoXpressao
-        seriesSetPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoSetPSV.getText().toString())));
-        seriesSetPressaoPSV.setName("Ajuste PSV");
+        if(verificaSeDadosUsuarioMudaram(Double.valueOf(txtPressaoSetPSV.getText().toString()),
+                Double.valueOf(txtPressaoMaxima.getText().toString()),
+                Double.valueOf(txtPressaoMinima.getText().toString()))) {
+            pegaMaiorTempo = pegaMaiorTempo + 5;
+            //set PSV
+            seriesSetPressaoPSV.getData().clear();
+            seriesSetPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoSetPSV.getText().toString())));//tempoXpressao
+            seriesSetPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoSetPSV.getText().toString())));
+            seriesSetPressaoPSV.setName("Ajuste PSV");
 
-        //Max PSV
-        seriesMaxPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoMaxima.getText().toString())));
-        seriesMaxPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoMaxima.getText().toString())));
-        seriesMaxPressaoPSV.setName("Max PSV");
+            //Max PSV
+            seriesMaxPressaoPSV.getData().clear();
+            seriesMaxPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoMaxima.getText().toString())));
+            seriesMaxPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoMaxima.getText().toString())));
+            seriesMaxPressaoPSV.setName("Max PSV");
 
-        //set PSV
-        seriesMinPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoMinima.getText().toString())));
-        seriesMinPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoMinima.getText().toString())));
-        seriesMinPressaoPSV.setName("Min PSV");
+            //set PSV
+            seriesMinPressaoPSV.getData().clear();
+            seriesMinPressaoPSV.getData().add(new XYChart.Data(0, Double.valueOf(txtPressaoMinima.getText().toString())));
+            seriesMinPressaoPSV.getData().add(new XYChart.Data(pegaMaiorTempo, Double.valueOf(txtPressaoMinima.getText().toString())));
+            seriesMinPressaoPSV.setName("Min PSV");
+        }
+    }
+
+    public boolean verificaSeDadosUsuarioMudaram(Double pressaoSet, Double pressaoMaxima, Double pressaoMinima){
+        boolean retorno = false;
+        if((pressaoAjusteUsuario != pressaoSet) || (pressaoMaximaeUsuario != pressaoMaxima) ||
+                (pressaoMinimseUsuario != pressaoMinima) || dadosUsuarioUmavez){
+            retorno = true;
+            dadosUsuariosMudaram = true;
+        }
+        else{
+            dadosUsuariosMudaram = false;
+        }
+        if(dadosUsuarioUmavez){
+            pressaoAjusteUsuario = pressaoSet;
+            pressaoMaximaeUsuario = pressaoMaxima;
+            pressaoMinimseUsuario = pressaoMinima;
+            dadosUsuarioUmavez = false;
+        }
+        return retorno;
     }
 
     //remover depois

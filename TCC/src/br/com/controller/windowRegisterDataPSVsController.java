@@ -29,6 +29,7 @@ public class windowRegisterDataPSVsController {
     public MenuButton txtListaPSVs;
     private boolean umaVezMouseMoved = false;
     private int indicePSVSelecionada;
+    private Controller controller = new Controller();
 
     public windowRegisterDataPSVsController(){
         pegaListaDePSVs();
@@ -109,6 +110,9 @@ public class windowRegisterDataPSVsController {
 
 //            } else {
 //                JOptionPane.showConfirmDialog(null, "Os dados não condizem com os parametros da PSV!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
+//            }
+//            if(controller.getWindowGraphController() != null) {
+//                controller.getWindowGraphController().checkDatasPSVPlot();
 //            }
         }
 
