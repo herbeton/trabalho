@@ -188,14 +188,14 @@ public class windowGraphController {
         //adiciona a lista de estados das series ao grafico
         for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeEstadosDeSeriesDasPSVs.get(i));
-            for(int j=0 ; j<listaDeEstadosDeSeriesDasPSVs.size(); i++){
-                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()){
-                    break;
-                }
-                if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(j))){
-                    i++;
-                }
-            }
+//            for(int j=1 ; j<=listaDeEstadosDeSeriesDasPSVs.size(); i++){
+//                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()){
+//                    break;
+//                }
+//                if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(i + j))){
+//                    i++;
+//                }
+//            }
             lineAjusteDadosUsuario.setLayoutY(lineAjusteDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoSetPSV.getText().toString()));
             lineMaxDadosUsuario.setLayoutY(lineMaxDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMaxima.getText().toString()));
             lineMinDadosUsuario.setLayoutY(lineMinDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMinima.getText().toString()));
@@ -241,6 +241,7 @@ public class windowGraphController {
         seriesSetPressaoPSV.getData().clear();
         seriesMaxPressaoPSV.getData().clear();
         seriesMinPressaoPSV.getData().clear();
+        seriesEstado.getData().clear();
         listaDeSeriesDasPSVs.clear();
         listaDeEstadosDeSeriesDasPSVs.clear();
         listaDeIdPSVs.clear();
@@ -266,7 +267,7 @@ public class windowGraphController {
         Integer iDPSV;
         for(int i = 0; i < quantPSVs ; i++) {
             iDPSV = (Integer) listaDeIdPSVs.get(i);
-            String sql = "select * from DadosPSV WHERE idPSV = '" + listaDeIdPSVs.get(i) + "'";
+            String sql = "select * from DadosPSV WHERE idPSV = '" + listaDeIdPSVs.get(i) + "' order by idPSV,tempoPSV";
             String sqlNomePSV = "select nomePSV from PSVs where idPSV = '" + listaDeIdPSVs.get(i) + "'";
             String nomePSVAtual = "";
             ResultSet resultadoNomePSV = null;
@@ -319,9 +320,11 @@ public class windowGraphController {
                             contDuasVezesAberturaPSV++;
                         }
                         if(contDuasVezesAberturaPSV == 2){
-                            seriesEstado.setName("A " + nomePSVAtual + " abriu!");
-                            listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
-                            seriesEstado = new XYChart.Series();
+                            if(verificaSeNaoExisteSerieNaLista(seriesEstado, listaDeEstadosDeSeriesDasPSVs)){
+                                seriesEstado.setName("A " + nomePSVAtual + " abriu!");
+                                listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
+                                seriesEstado = new XYChart.Series();
+                            }
                             contDuasVezesAberturaPSV = 0;
                         }
                         inserirEstadoPSVNoDB(estadoPSV, conexao);
@@ -337,6 +340,24 @@ public class windowGraphController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private boolean verificaSeNaoExisteSerieNaLista(XYChart.Series seriesEstado, ArrayList<XYChart.Series> listaDeEstadosDeSeriesDasPSVs) {
+        boolean retorno = true;
+        boolean saiDoLaco = false;
+        for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size(); i++){
+            if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(seriesEstado)){
+                saiDoLaco = true;
+                retorno = false;
+            }
+            if(saiDoLaco){
+                break;
+            }
+//            if((listaDeEstadosDeSeriesDasPSVs.size() - 1) == i){
+//
+//            }
+        }
+        return retorno;
     }
 
 
@@ -424,7 +445,7 @@ public class windowGraphController {
         Double pressaoDeAjuste = Double.parseDouble(txtPressaoSetPSV.getText().toString());
         if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d))
                 <= 0.5) || ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) >= 0.1) &&
-                ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) <= 0.5)){
+                ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) <= 0.5) && pressaoAnteriroPSV >= pressaoDeAjuste){
             estadoPSV = "A PSV abriu!";
         }
 
