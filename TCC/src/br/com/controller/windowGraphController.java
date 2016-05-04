@@ -166,6 +166,9 @@ public class windowGraphController {
 
     private void plotParametrosPSVUsuario(){
         verificarInserirDadosUsuarioDB();
+        graphWindow.setLegendVisible(false);
+        graphWindow.setHorizontalGridLinesVisible(true);
+        graphWindow.setCreateSymbols(false);
         //remove as series anteriores
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
@@ -188,24 +191,35 @@ public class windowGraphController {
         //adiciona a lista de estados das series ao grafico
         for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeEstadosDeSeriesDasPSVs.get(i));
-            for(int j=1 ; j<=listaDeEstadosDeSeriesDasPSVs.size(); i++){
-                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()){
+            for(int j=1 ; j<listaDeEstadosDeSeriesDasPSVs.size(); j++){
+                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()
+                        || (i+j) == listaDeEstadosDeSeriesDasPSVs.size()){
                     break;
                 }
-                if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(i + j))){
+                if (listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(i + j))) {
                     i++;
                 }
             }
             lineAjusteDadosUsuario.setLayoutY(lineAjusteDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoSetPSV.getText().toString()));
             lineMaxDadosUsuario.setLayoutY(lineMaxDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMaxima.getText().toString()));
             lineMinDadosUsuario.setLayoutY(lineMinDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMinima.getText().toString()));
-            double hh = graphWindow.getScaleY();
-            String j ="f";
         }
 //        if(dadosUsuariosMudaram) {
 //            graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
 //            dadosUsuariosMudaram = false;
 //        }
+
+        //Muda as cores dos elementos do gráfico
+        for (XYChart.Series s : graphWindow.getData()) {
+
+            if(("A PSV1 abriu!").equals(s.getName()))
+            {
+                s.getNode().setStyle("-fx-stroke: #F00F0F; ");
+            }
+            else if(("PSV1").equals(s.getName())){
+                s.getNode().setStyle("-fx-stroke: #0F00F0; ");
+            }
+        }
 
     }
 
