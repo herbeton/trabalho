@@ -17,7 +17,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.controller.windowGraphController">
@@ -49,9 +48,6 @@
                             <xAxis><NumberAxis label="Tempo" lowerBound="0" side="BOTTOM" tickUnit="1" upperBound="3" /></xAxis>
                             <yAxis><NumberAxis label="Pressão" lowerBound="0" side="LEFT" tickUnit="1" upperBound="3" /></yAxis>
                         </LineChart>
-                        <Line fx:id="lineMaxDadosUsuario" endX="1000.0" layoutX="171.5" layoutY="70.0" startX="-100.0" strokeType="OUTSIDE" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" />
-                        <Line fx:id="lineAjusteDadosUsuario" endX="1000.0" layoutX="171.0" layoutY="265.0" startX="-100.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" />
-                        <Line fx:id="lineMinDadosUsuario" endX="1000.0" layoutX="171.0" layoutY="333.0" startX="-100.0" strokeType="OUTSIDE" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
                   <VBox>

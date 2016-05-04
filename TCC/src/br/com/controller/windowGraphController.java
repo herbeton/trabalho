@@ -50,9 +50,6 @@ public class windowGraphController {
     public TableColumn<HistoriadorLista, String> columnHistoriadorPMinima;
     public TableColumn<HistoriadorLista, String> columnHistoriadorEstado;
     public TableView<HistoriadorLista> tableHistorian;
-    public Line lineMaxDadosUsuario;
-    public Line lineAjusteDadosUsuario;
-    public Line lineMinDadosUsuario;
     private int idEstado = 0;
     private ObservableList<PSVsLista> psvsData = FXCollections.observableArrayList();
     private ObservableList<HistoriadorLista> historiadorData = FXCollections.observableArrayList();
@@ -62,10 +59,6 @@ public class windowGraphController {
     private Double pressaoMaximaeUsuario = 0d;
     private Double pressaoMinimseUsuario = 0d;
     private Controller controller = new Controller();
-    private static final Double lineMaxDadosUsuarioEstaticoY = 150d;//90d + 60d
-    private static final Double lineAjusteDadosUsuarioEstaticoY = 283d;//203d + 80d
-    private static final Double lineMinDadosUsuarioEstaticoY = 423d;//333d + 90d
-
 
     @FXML LineChart<Number, Number> graphWindow;
     
@@ -169,6 +162,7 @@ public class windowGraphController {
         graphWindow.setLegendVisible(false);
         graphWindow.setHorizontalGridLinesVisible(true);
         graphWindow.setCreateSymbols(false);
+
         //remove as series anteriores
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
@@ -200,14 +194,11 @@ public class windowGraphController {
                     i++;
                 }
             }
-            lineAjusteDadosUsuario.setLayoutY(lineAjusteDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoSetPSV.getText().toString()));
-            lineMaxDadosUsuario.setLayoutY(lineMaxDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMaxima.getText().toString()));
-            lineMinDadosUsuario.setLayoutY(lineMinDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMinima.getText().toString()));
         }
-//        if(dadosUsuariosMudaram) {
-//            graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
-//            dadosUsuariosMudaram = false;
-//        }
+        if(dadosUsuariosMudaram) {
+            graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
+            dadosUsuariosMudaram = false;
+        }
 
         //Muda as cores dos elementos do gráfico
         for (XYChart.Series s : graphWindow.getData()) {
@@ -217,7 +208,13 @@ public class windowGraphController {
                 s.getNode().setStyle("-fx-stroke: #F00F0F; ");
             }
             else if(("PSV1").equals(s.getName())){
-                s.getNode().setStyle("-fx-stroke: #0F00F0; ");
+                s.getNode().setStyle("-fx-stroke: #0F00F0; ");//837676
+            }
+            else if(("Ajuste PSV").equals(s.getName())){
+                s.getNode().setStyle("-fx-stroke: #837676; ");
+            }
+            else if(("Max PSV").equals(s.getName()) || ("Min PSV").equals(s.getName())){
+                s.getNode().setStyle("-fx-stroke: #000000; ");
             }
         }
 

@@ -69,30 +69,31 @@
       <file leaf-file-name="windowGraphController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66842103">
-              <caret line="218" column="26" selection-start-line="218" selection-start-column="26" selection-end-line="218" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.5182482">
+              <caret line="210" column="70" selection-start-line="210" selection-start-column="70" selection-end-line="210" selection-end-column="70" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#1238#1254#0" expanded="true" />
-                <marker date="1462403287208" expanded="true" signature="6535:6761" placeholder="select PSVS.... PSVs" />
-                <marker date="1462403287208" expanded="true" signature="6535:6762" placeholder="select PSVS.... PSVs" />
-                <marker date="1462403287208" expanded="true" signature="6535:6921" placeholder="select PSVS.... PSVs" />
-                <marker date="1462403287208" expanded="true" signature="10495:10759" placeholder="select * fro... HistoricoPSV" />
-                <marker date="1462403287208" expanded="true" signature="11127:11406" placeholder="INSERT INTO HistoricoPSV... " />
-                <marker date="1462403287208" expanded="true" signature="12782:12804" placeholder="select * fro... DadosPSVGrafico" />
-                <marker date="1462403287208" expanded="true" signature="12782:12818" placeholder="select * fro... DadosPSV" />
-                <marker date="1462403287208" expanded="true" signature="12782:12820" placeholder="select * fro... DadosPSV" />
-                <marker date="1462403287208" expanded="true" signature="12782:12849" placeholder="select * fro... DadosPSV" />
-                <marker date="1462403287208" expanded="true" signature="12782:12873" placeholder="select * fro... DadosPSV" />
-                <marker date="1462403287208" expanded="true" signature="12909:12978" placeholder="select nomeP... PSVs" />
-                <marker date="1462403287208" expanded="true" signature="17937:18242" placeholder="select idHis... HistoricoPSV" />
-                <marker date="1462403287208" expanded="true" signature="18609:18844" placeholder="select * fro... DadosPSV" />
-                <marker date="1462403287208" expanded="true" signature="18887:19089" placeholder="insert into DadosPSV... " />
-                <marker date="1462403287208" expanded="true" signature="19582:19662" placeholder="select IdEst... EstadoHistoricoPSV" />
-                <marker date="1462403287208" expanded="true" signature="19942:20254" placeholder="select * fro... HistoricoPSV" />
-                <marker date="1462403287208" expanded="true" signature="20302:20601" placeholder="insert into HistoricoPSV... " />
-                <marker date="1462403287208" expanded="true" signature="21068:21138" placeholder="select * fro... EstadoHistoricoPSV" />
-                <marker date="1462403287208" expanded="true" signature="21178:21249" placeholder="insert into EstadoHistoricoPSV... " />
-                <marker date="1462403287208" expanded="true" signature="21677:21722" placeholder="select idPSV... PSVs" />
+                <marker date="1462404380264" expanded="true" signature="6175:6401" placeholder="select PSVS.... PSVs" />
+                <marker date="1462404380264" expanded="true" signature="6175:6402" placeholder="select PSVS.... PSVs" />
+                <marker date="1462404380264" expanded="true" signature="6175:6561" placeholder="select PSVS.... PSVs" />
+                <marker date="1462404380264" expanded="true" signature="10028:10292" placeholder="select * fro... HistoricoPSV" />
+                <marker date="1462404380264" expanded="true" signature="10660:10939" placeholder="INSERT INTO HistoricoPSV... " />
+                <marker date="1462404380264" expanded="true" signature="12315:12337" placeholder="select * fro... DadosPSVGrafico" />
+                <marker date="1462404380264" expanded="true" signature="12315:12351" placeholder="select * fro... DadosPSV" />
+                <marker date="1462404380264" expanded="true" signature="12315:12353" placeholder="select * fro... DadosPSV" />
+                <marker date="1462404380264" expanded="true" signature="12315:12382" placeholder="select * fro... DadosPSV" />
+                <marker date="1462404380264" expanded="true" signature="12315:12406" placeholder="select * fro... DadosPSV" />
+                <marker date="1462404380264" expanded="true" signature="12442:12511" placeholder="select nomeP... PSVs" />
+                <marker date="1462404380264" expanded="true" signature="17470:17775" placeholder="select idHis... HistoricoPSV" />
+                <marker date="1462404380264" expanded="true" signature="18142:18377" placeholder="select * fro... DadosPSV" />
+                <marker date="1462404380264" expanded="true" signature="18420:18622" placeholder="insert into DadosPSV... " />
+                <marker date="1462404380264" expanded="true" signature="19115:19195" placeholder="select IdEst... EstadoHistoricoPSV" />
+                <marker date="1462404380264" expanded="true" signature="19475:19787" placeholder="select * fro... HistoricoPSV" />
+                <marker date="1462404380264" expanded="true" signature="19835:20134" placeholder="insert into HistoricoPSV... " />
+                <marker date="1462404380264" expanded="true" signature="20601:20671" placeholder="select * fro... EstadoHistoricoPSV" />
+                <marker date="1462404380264" expanded="true" signature="20711:20782" placeholder="insert into EstadoHistoricoPSV... " />
+                <marker date="1462404380264" expanded="true" signature="21210:21255" placeholder="select idPSV... PSVs" />
               </folding>
             </state>
           </provider>
@@ -104,8 +105,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
+            <state vertical-scroll-proportion="-0.31034482">
+              <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -884,12 +885,12 @@
       <workItem from="1462278880079" duration="281000" />
       <workItem from="1462320787512" duration="1140000" />
       <workItem from="1462366018619" duration="3798000" />
-      <workItem from="1462398523356" duration="4552000" />
+      <workItem from="1462398523356" duration="5786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193537000" />
+    <option name="totallyTimeSpent" value="194771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -963,7 +964,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java</url>
-          <line>192</line>
+          <line>186</line>
           <properties />
           <option name="timeStamp" value="126" />
         </line-breakpoint>
@@ -1353,17 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/jdk1.8.0_77/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58677685">
@@ -1372,32 +1362,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.31034482">
+          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66842103">
-          <caret line="218" column="26" selection-start-line="218" selection-start-column="26" selection-end-line="218" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.5182482">
+          <caret line="210" column="70" selection-start-line="210" selection-start-column="70" selection-end-line="210" selection-end-column="70" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#1238#1254#0" expanded="true" />
-            <marker date="1462403287208" expanded="true" signature="6535:6761" placeholder="select PSVS.... PSVs" />
-            <marker date="1462403287208" expanded="true" signature="6535:6762" placeholder="select PSVS.... PSVs" />
-            <marker date="1462403287208" expanded="true" signature="6535:6921" placeholder="select PSVS.... PSVs" />
-            <marker date="1462403287208" expanded="true" signature="10495:10759" placeholder="select * fro... HistoricoPSV" />
-            <marker date="1462403287208" expanded="true" signature="11127:11406" placeholder="INSERT INTO HistoricoPSV... " />
-            <marker date="1462403287208" expanded="true" signature="12782:12804" placeholder="select * fro... DadosPSVGrafico" />
-            <marker date="1462403287208" expanded="true" signature="12782:12818" placeholder="select * fro... DadosPSV" />
-            <marker date="1462403287208" expanded="true" signature="12782:12820" placeholder="select * fro... DadosPSV" />
-            <marker date="1462403287208" expanded="true" signature="12782:12849" placeholder="select * fro... DadosPSV" />
-            <marker date="1462403287208" expanded="true" signature="12782:12873" placeholder="select * fro... DadosPSV" />
-            <marker date="1462403287208" expanded="true" signature="12909:12978" placeholder="select nomeP... PSVs" />
-            <marker date="1462403287208" expanded="true" signature="17937:18242" placeholder="select idHis... HistoricoPSV" />
-            <marker date="1462403287208" expanded="true" signature="18609:18844" placeholder="select * fro... DadosPSV" />
-            <marker date="1462403287208" expanded="true" signature="18887:19089" placeholder="insert into DadosPSV... " />
-            <marker date="1462403287208" expanded="true" signature="19582:19662" placeholder="select IdEst... EstadoHistoricoPSV" />
-            <marker date="1462403287208" expanded="true" signature="19942:20254" placeholder="select * fro... HistoricoPSV" />
-            <marker date="1462403287208" expanded="true" signature="20302:20601" placeholder="insert into HistoricoPSV... " />
-            <marker date="1462403287208" expanded="true" signature="21068:21138" placeholder="select * fro... EstadoHistoricoPSV" />
-            <marker date="1462403287208" expanded="true" signature="21178:21249" placeholder="insert into EstadoHistoricoPSV... " />
-            <marker date="1462403287208" expanded="true" signature="21677:21722" placeholder="select idPSV... PSVs" />
+            <marker date="1462404380264" expanded="true" signature="6175:6401" placeholder="select PSVS.... PSVs" />
+            <marker date="1462404380264" expanded="true" signature="6175:6402" placeholder="select PSVS.... PSVs" />
+            <marker date="1462404380264" expanded="true" signature="6175:6561" placeholder="select PSVS.... PSVs" />
+            <marker date="1462404380264" expanded="true" signature="10028:10292" placeholder="select * fro... HistoricoPSV" />
+            <marker date="1462404380264" expanded="true" signature="10660:10939" placeholder="INSERT INTO HistoricoPSV... " />
+            <marker date="1462404380264" expanded="true" signature="12315:12337" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1462404380264" expanded="true" signature="12315:12351" placeholder="select * fro... DadosPSV" />
+            <marker date="1462404380264" expanded="true" signature="12315:12353" placeholder="select * fro... DadosPSV" />
+            <marker date="1462404380264" expanded="true" signature="12315:12382" placeholder="select * fro... DadosPSV" />
+            <marker date="1462404380264" expanded="true" signature="12315:12406" placeholder="select * fro... DadosPSV" />
+            <marker date="1462404380264" expanded="true" signature="12442:12511" placeholder="select nomeP... PSVs" />
+            <marker date="1462404380264" expanded="true" signature="17470:17775" placeholder="select idHis... HistoricoPSV" />
+            <marker date="1462404380264" expanded="true" signature="18142:18377" placeholder="select * fro... DadosPSV" />
+            <marker date="1462404380264" expanded="true" signature="18420:18622" placeholder="insert into DadosPSV... " />
+            <marker date="1462404380264" expanded="true" signature="19115:19195" placeholder="select IdEst... EstadoHistoricoPSV" />
+            <marker date="1462404380264" expanded="true" signature="19475:19787" placeholder="select * fro... HistoricoPSV" />
+            <marker date="1462404380264" expanded="true" signature="19835:20134" placeholder="insert into HistoricoPSV... " />
+            <marker date="1462404380264" expanded="true" signature="20601:20671" placeholder="select * fro... EstadoHistoricoPSV" />
+            <marker date="1462404380264" expanded="true" signature="20711:20782" placeholder="insert into EstadoHistoricoPSV... " />
+            <marker date="1462404380264" expanded="true" signature="21210:21255" placeholder="select idPSV... PSVs" />
           </folding>
         </state>
       </provider>
