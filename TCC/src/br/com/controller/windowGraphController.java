@@ -188,14 +188,14 @@ public class windowGraphController {
         //adiciona a lista de estados das series ao grafico
         for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeEstadosDeSeriesDasPSVs.get(i));
-//            for(int j=1 ; j<=listaDeEstadosDeSeriesDasPSVs.size(); i++){
-//                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()){
-//                    break;
-//                }
-//                if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(i + j))){
-//                    i++;
-//                }
-//            }
+            for(int j=1 ; j<=listaDeEstadosDeSeriesDasPSVs.size(); i++){
+                if(i==listaDeEstadosDeSeriesDasPSVs.size() || j==listaDeEstadosDeSeriesDasPSVs.size()){
+                    break;
+                }
+                if(listaDeEstadosDeSeriesDasPSVs.get(i).equals(listaDeEstadosDeSeriesDasPSVs.get(i + j))){
+                    i++;
+                }
+            }
             lineAjusteDadosUsuario.setLayoutY(lineAjusteDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoSetPSV.getText().toString()));
             lineMaxDadosUsuario.setLayoutY(lineMaxDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMaxima.getText().toString()));
             lineMinDadosUsuario.setLayoutY(lineMinDadosUsuarioEstaticoY - Double.parseDouble(txtPressaoMinima.getText().toString()));
@@ -275,9 +275,10 @@ public class windowGraphController {
             Double pressaoAnteriroPSV = 0d;
             Double pressaoAtualPSV;
             Double tempoAtualPSV;
+            Double tempoAnteriorPSV = 0d;
             Double pressaoFuturaPSV = 0d;
             String estadoPSV = "";
-            int contDuasVezesAberturaPSV = 0;
+            int contUmaVezAberturaPSV = 0;
             boolean insereUmaVezAPressao = true;
             try {
                 resultSet = conexao.createStatement().executeQuery(sql);
@@ -300,6 +301,7 @@ public class windowGraphController {
                         pressaoFuturaPSV = resultSet.getDouble(2);
                         if(insereUmaVezAPressao){
                             pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
+                            tempoAnteriorPSV = tempoAtualPSV + 0.01d;
                             insereUmaVezAPressao = false;
                         }
                         series.getData().add(new XYChart.Data(tempoAtualPSV, pressaoAtualPSV));//tempoXpressao
@@ -314,23 +316,26 @@ public class windowGraphController {
                         }
                         dadosPSV.setPressaoPSV(pressaoAtualPSV);
                         dadosPSV.setTempoPSV(tempoAtualPSV);
-                        estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV, pressaoFuturaPSV);
+                        estadoPSV = analisaEstadoPSV(pressaoAtualPSV, pressaoAnteriroPSV, pressaoFuturaPSV,
+                                tempoAtualPSV, tempoAnteriorPSV);
                         if(estadoPSV == "A PSV abriu!"){
                             seriesEstado.getData().add(new XYChart.Data(tempoAtualPSV, pressaoAtualPSV));
-                            contDuasVezesAberturaPSV++;
+                            seriesEstado.getData().add(new XYChart.Data(tempoAnteriorPSV, pressaoAnteriroPSV));
+                            contUmaVezAberturaPSV++;
                         }
-                        if(contDuasVezesAberturaPSV == 2){
+                        if(contUmaVezAberturaPSV == 1){
                             if(verificaSeNaoExisteSerieNaLista(seriesEstado, listaDeEstadosDeSeriesDasPSVs)){
                                 seriesEstado.setName("A " + nomePSVAtual + " abriu!");
                                 listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
                                 seriesEstado = new XYChart.Series();
                             }
-                            contDuasVezesAberturaPSV = 0;
+                            contUmaVezAberturaPSV = 0;
                         }
                         inserirEstadoPSVNoDB(estadoPSV, conexao);
                         inserirHistoricoPSVNoDB(estadoPSV,conexao, iDPSV, pressaoAnteriroPSV);
                         isenrirDadosPSVNoDB(conexao, dadosPSV, iDPSV);
                         pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
+                        tempoAnteriorPSV = tempoAtualPSV + 0.01d;
                     }
                     series.setName(nomePSVAtual);
                     listaDeSeriesDasPSVs.add(series);
@@ -438,14 +443,19 @@ public class windowGraphController {
         }
     }
 
-    public String analisaEstadoPSV(Double pressaoAtualPSV, Double pressaoAnteriroPSV, Double pressaoFuturaPSV){
+    public String analisaEstadoPSV(Double pressaoAtualPSV, Double pressaoAnteriroPSV, Double pressaoFuturaPSV,
+                                   Double tempoAtualPSV, Double tempoAnteriorPSV){
         String estadoPSV = "";
         Double pressaoMaxima = Double.parseDouble(txtPressaoMaxima.getText().toString());
         Double pressaoMinima = Double.parseDouble(txtPressaoMinima.getText().toString());
         Double pressaoDeAjuste = Double.parseDouble(txtPressaoSetPSV.getText().toString());
-        if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d))
-                <= 0.5) || ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) >= 0.1) &&
-                ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) <= 0.5) && pressaoAnteriroPSV >= pressaoDeAjuste){
+//        if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d))
+//                <= 0.5) || ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) >= 0.1) &&
+//                ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) <= 0.5) && (pressaoAtualPSV >= pressaoDeAjuste)
+//                && ((pressaoAtualPSV - pressaoFuturaPSV > 0))){
+        boolean c = (pressaoAtualPSV - pressaoAnteriroPSV)/(tempoAtualPSV - tempoAnteriorPSV) < -15;
+        if(((pressaoAtualPSV - pressaoAnteriroPSV)/(tempoAtualPSV - tempoAnteriorPSV) < -15)
+                && (pressaoAnteriroPSV > pressaoAtualPSV) && (pressaoAnteriroPSV > pressaoDeAjuste)){
             estadoPSV = "A PSV abriu!";
         }
 
