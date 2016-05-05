@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -160,8 +161,7 @@ public class windowGraphController {
     private void plotParametrosPSVUsuario(){
         verificarInserirDadosUsuarioDB();
         graphWindow.setLegendVisible(false);
-        graphWindow.setHorizontalGridLinesVisible(true);
-        graphWindow.setCreateSymbols(false);
+//        graphWindow.setCreateSymbols(false);
 
         //remove as series anteriores
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
@@ -199,6 +199,7 @@ public class windowGraphController {
             graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
             dadosUsuariosMudaram = false;
         }
+        Tooltip.install(seriesMaxPressaoPSV.getNode(), new Tooltip("Symbol-0"));
 
         //Muda as cores dos elementos do gráfico
         for (XYChart.Series s : graphWindow.getData()) {
@@ -208,7 +209,7 @@ public class windowGraphController {
                 s.getNode().setStyle("-fx-stroke: #F00F0F; ");
             }
             else if(("PSV1").equals(s.getName())){
-                s.getNode().setStyle("-fx-stroke: #0F00F0; ");//837676
+                s.getNode().setStyle("-fx-stroke: #0F00F0; ");
             }
             else if(("Ajuste PSV").equals(s.getName())){
                 s.getNode().setStyle("-fx-stroke: #837676; ");
@@ -216,7 +217,24 @@ public class windowGraphController {
             else if(("Max PSV").equals(s.getName()) || ("Min PSV").equals(s.getName())){
                 s.getNode().setStyle("-fx-stroke: #000000; ");
             }
-        }
+            else{
+                s.getNode().setStyle("-fx-stroke: #0F00F0; ");
+            }
+            for (XYChart.Series<Number, Number> a : graphWindow.getData()) {
+                for (XYChart.Data<Number, Number> d : a.getData()) {
+                    Tooltip.install(d.getNode(), new Tooltip(
+                            "Pressão da PSV: " + d.getYValue().toString() + "\n" +
+                                    "Tempo da PSV: " + d.getXValue()));
+
+                    //Adding class on hover
+                    d.getNode().setOnMouseEntered(event -> d.getNode().getStyleClass().add("onHover"));
+
+                    //Removing class on exit
+                    d.getNode().setOnMouseExited(event -> d.getNode().getStyleClass().remove("onHover"));
+                }
+            }        }
+//      Tooltip tooltip = new Tooltip();
+
 
     }
 
