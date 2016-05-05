@@ -204,11 +204,11 @@ public class windowGraphController {
         //Muda as cores dos elementos do gráfico
         for (XYChart.Series s : graphWindow.getData()) {
 
-            if(("A PSV1 abriu!").equals(s.getName()))
+            if(("A PSV1 abriu!").equals(s.getName()) || ("A PSV2 abriu!").equals(s.getName()))
             {
                 s.getNode().setStyle("-fx-stroke: #F00F0F; ");
             }
-            else if(("PSV1").equals(s.getName())){
+            else if(("PSV1").equals(s.getName()) || ("PSV2").equals(s.getName())){
                 s.getNode().setStyle("-fx-stroke: #0F00F0; ");
             }
             else if(("Ajuste PSV").equals(s.getName())){
@@ -218,8 +218,9 @@ public class windowGraphController {
                 s.getNode().setStyle("-fx-stroke: #000000; ");
             }
             else{
-                s.getNode().setStyle("-fx-stroke: #0F00F0; ");
+                s.getNode().disableProperty();
             }
+            //adição do tootip ao grafico
             for (XYChart.Series<Number, Number> a : graphWindow.getData()) {
                 for (XYChart.Data<Number, Number> d : a.getData()) {
                     Tooltip.install(d.getNode(), new Tooltip(
@@ -237,6 +238,7 @@ public class windowGraphController {
 
 
     }
+
 
     private void verificarInserirDadosUsuarioDB(){
         Connection conexao = null;

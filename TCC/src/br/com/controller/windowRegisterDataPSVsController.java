@@ -128,9 +128,9 @@ public class windowRegisterDataPSVsController {
             String sql = "INSERT INTO DadosPSV (pressaoPSV, tempoPSV, idPSV) VALUES ('" + txtPressaoPSV.getText().toString()
                     + "' , '" + txtTempoPSV.getText().toString() + "' , '"+ indicePSVSelecionada + "')";
             conexao.createStatement().executeUpdate(sql);
-            txtListaPSVs.setText("");
-            txtPressaoPSV.clear();
-            txtTempoPSV.clear();
+//            txtListaPSVs.setText("");
+//            txtPressaoPSV.clear();
+//            txtTempoPSV.clear();
         }
         catch (Exception e){
 
