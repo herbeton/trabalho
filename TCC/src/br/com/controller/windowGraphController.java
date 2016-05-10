@@ -158,15 +158,29 @@ public class windowGraphController {
         tablePsvs.setItems(psvsData);
     }
 
-    public void filtraPSVs(){
-        if(!booleanAnalisar) {
-            ObservableList<PSVsLista> f = tablePsvs.getItems();
-            //graphWindow.getData().
-
-            String ff = "k";
-        }
-        else{
-
+    public void filtraPSVs() {
+        if (!booleanAnalisar) {
+            ObservableList<PSVsLista> pegaElementoSelecionadoDaLista = tablePsvs.getSelectionModel().getSelectedItems();
+            for (int i = 0; i < listaDeSeriesDasPSVs.size(); i++) {
+                if (!pegaElementoSelecionadoDaLista.get(0).getNomePSV().getValue().equals(listaDeSeriesDasPSVs.get(i).getName())) {
+                    graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
+                }
+            }
+        } else {
+            ObservableList<PSVsLista> pegaElementoSelecionadoDaLista = tablePsvs.getSelectionModel().getSelectedItems();
+            for (int i = 0; i < listaDeSeriesDasPSVs.size(); i++) {
+                if (!pegaElementoSelecionadoDaLista.get(0).getNomePSV().getValue().equals(listaDeSeriesDasPSVs.get(i).getName())) {
+                    graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
+                }
+            }
+            for (int i = 0; i < listaDeEstadosDeSeriesDasPSVs.size(); i++) {
+                String valoDaLista = "A " + pegaElementoSelecionadoDaLista.get(0).getNomePSV().getValue();
+                String subStringDosEstados = listaDeEstadosDeSeriesDasPSVs.get(i).getName().substring(0, valoDaLista.length());
+                boolean jj = valoDaLista.equals(subStringDosEstados);
+                if (!valoDaLista.equals(subStringDosEstados)) {
+                    graphWindow.getData().remove(listaDeEstadosDeSeriesDasPSVs.get(i));
+                }
+            }
         }
     }
 
@@ -216,8 +230,7 @@ public class windowGraphController {
         int Blue1 = 5;
         //Muda as cores dos elementos do gráfico
         for (XYChart.Series s : graphWindow.getData()) {
-
-            if(("A abriu!").equals(s.getName()))
+            if((" abriu!").equals(s.getName().substring(Math.max(0, s.getName().length() - 7))))
             {
                 s.getNode().setStyle("-fx-stroke: #FF0000; ");
             }
@@ -397,7 +410,7 @@ public class windowGraphController {
                         }
                         if(contUmaVezAberturaPSV == 1){
                             if(verificaSeNaoExisteSerieNaLista(seriesEstado, listaDeEstadosDeSeriesDasPSVs)){
-                                seriesEstado.setName("A abriu!");
+                                seriesEstado.setName("A " + nomePSVAtual +" abriu!");
                                 listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
                                 seriesEstado = new XYChart.Series();
                             }
@@ -497,9 +510,6 @@ public class windowGraphController {
             if(saiDoLaco){
                 break;
             }
-//            if((listaDeEstadosDeSeriesDasPSVs.size() - 1) == i){
-//
-//            }
         }
         return retorno;
     }
@@ -588,16 +598,10 @@ public class windowGraphController {
         Double pressaoMaxima = Double.parseDouble(txtPressaoMaxima.getText().toString());
         Double pressaoMinima = Double.parseDouble(txtPressaoMinima.getText().toString());
         Double pressaoDeAjuste = Double.parseDouble(txtPressaoSetPSV.getText().toString());
-//        if(((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d)) >= 0.1) && ((pressaoAtualPSV/(pressaoAnteriroPSV + 0.01d))
-//                <= 0.5) || ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) >= 0.1) &&
-//                ((pressaoFuturaPSV/(pressaoAtualPSV + 0.01d)) <= 0.5) && (pressaoAtualPSV >= pressaoDeAjuste)
-//                && ((pressaoAtualPSV - pressaoFuturaPSV > 0))){
-        boolean c = (pressaoAtualPSV - pressaoAnteriroPSV)/(tempoAtualPSV - tempoAnteriorPSV) < -15;
         if(((pressaoAtualPSV - pressaoAnteriroPSV)/(tempoAtualPSV - tempoAnteriorPSV) < -15)
                 && (pressaoAnteriroPSV > pressaoAtualPSV) && (pressaoAnteriroPSV > pressaoDeAjuste)){
             estadoPSV = "A PSV abriu!";
         }
-
         else if(pressaoAtualPSV == pressaoMaxima){
             estadoPSV = "A PSV está com sua pressão máxima!";
         }
@@ -613,7 +617,6 @@ public class windowGraphController {
         else{
             estadoPSV = "A PSV não abriu!";
         }
-
         return estadoPSV;
     }
 
@@ -660,16 +663,6 @@ public class windowGraphController {
             dadosUsuarioUmavez = false;
         }
         return retorno;
-    }
-
-    //remover depois
-    public void openSample(ActionEvent event){
-        Stage stage = new Stage();
-        Scene scene = new Scene(new VBox());
-        stage.setTitle("sample");
-        stage.setResizable(false);//para não deixar mecher no tamanho da janela
-        stage.setScene(scene);
-        stage.show();
     }
 
     public void openWindowAbout(){

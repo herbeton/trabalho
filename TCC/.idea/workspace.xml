@@ -69,32 +69,32 @@
       <file leaf-file-name="windowGraphController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31143552">
-              <caret line="163" column="14" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.5555556">
+              <caret line="181" column="17" selection-start-line="181" selection-start-column="17" selection-end-line="181" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1462869541812" expanded="true" signature="6358:6584" placeholder="select PSVS.... PSVs" />
-                <marker date="1462869541812" expanded="true" signature="6358:6585" placeholder="select PSVS.... PSVs" />
-                <marker date="1462869541812" expanded="true" signature="6358:6744" placeholder="select PSVS.... PSVs" />
-                <marker date="1462869541812" expanded="true" signature="12289:12553" placeholder="select * fro... HistoricoPSV" />
-                <marker date="1462869541812" expanded="true" signature="12921:13200" placeholder="INSERT INTO HistoricoPSV... " />
-                <marker date="1462869541812" expanded="true" signature="14576:14598" placeholder="select * fro... DadosPSVGrafico" />
-                <marker date="1462869541812" expanded="true" signature="14576:14612" placeholder="select * fro... DadosPSV" />
-                <marker date="1462869541812" expanded="true" signature="14576:14614" placeholder="select * fro... DadosPSV" />
-                <marker date="1462869541812" expanded="true" signature="14576:14643" placeholder="select * fro... DadosPSV" />
-                <marker date="1462869541812" expanded="true" signature="14576:14667" placeholder="select * fro... DadosPSV" />
-                <marker date="1462869541812" expanded="true" signature="14703:14772" placeholder="select nomeP... PSVs" />
-                <marker date="1462869541812" expanded="true" signature="19910:20001" placeholder="select * fro... DadosPSV" />
-                <marker date="1462869541812" expanded="true" signature="20037:20106" placeholder="select nomeP... PSVs" />
-                <marker date="1462869541812" expanded="true" signature="22511:22816" placeholder="select idHis... HistoricoPSV" />
-                <marker date="1462869541812" expanded="true" signature="23183:23418" placeholder="select * fro... DadosPSV" />
-                <marker date="1462869541812" expanded="true" signature="23461:23663" placeholder="insert into DadosPSV... " />
-                <marker date="1462869541812" expanded="true" signature="24156:24236" placeholder="select IdEst... EstadoHistoricoPSV" />
-                <marker date="1462869541812" expanded="true" signature="24516:24828" placeholder="select * fro... HistoricoPSV" />
-                <marker date="1462869541812" expanded="true" signature="24876:25175" placeholder="insert into HistoricoPSV... " />
-                <marker date="1462869541812" expanded="true" signature="25642:25712" placeholder="select * fro... EstadoHistoricoPSV" />
-                <marker date="1462869541812" expanded="true" signature="25752:25823" placeholder="insert into EstadoHistoricoPSV... " />
-                <marker date="1462869541812" expanded="true" signature="26251:26296" placeholder="select idPSV... PSVs" />
+                <marker date="1462875353847" expanded="true" signature="6358:6584" placeholder="select PSVS.... PSVs" />
+                <marker date="1462875353847" expanded="true" signature="6358:6585" placeholder="select PSVS.... PSVs" />
+                <marker date="1462875353847" expanded="true" signature="6358:6744" placeholder="select PSVS.... PSVs" />
+                <marker date="1462875353847" expanded="true" signature="13629:13893" placeholder="select * fro... HistoricoPSV" />
+                <marker date="1462875353847" expanded="true" signature="14261:14540" placeholder="INSERT INTO HistoricoPSV... " />
+                <marker date="1462875353847" expanded="true" signature="15916:15938" placeholder="select * fro... DadosPSVGrafico" />
+                <marker date="1462875353847" expanded="true" signature="15916:15952" placeholder="select * fro... DadosPSV" />
+                <marker date="1462875353847" expanded="true" signature="15916:15954" placeholder="select * fro... DadosPSV" />
+                <marker date="1462875353847" expanded="true" signature="15916:15983" placeholder="select * fro... DadosPSV" />
+                <marker date="1462875353847" expanded="true" signature="15916:16007" placeholder="select * fro... DadosPSV" />
+                <marker date="1462875353847" expanded="true" signature="16043:16112" placeholder="select nomeP... PSVs" />
+                <marker date="1462875353847" expanded="true" signature="21270:21361" placeholder="select * fro... DadosPSV" />
+                <marker date="1462875353847" expanded="true" signature="21397:21466" placeholder="select nomeP... PSVs" />
+                <marker date="1462875353847" expanded="true" signature="23785:24090" placeholder="select idHis... HistoricoPSV" />
+                <marker date="1462875353847" expanded="true" signature="24457:24692" placeholder="select * fro... DadosPSV" />
+                <marker date="1462875353847" expanded="true" signature="24735:24937" placeholder="insert into DadosPSV... " />
+                <marker date="1462875353847" expanded="true" signature="25430:25510" placeholder="select IdEst... EstadoHistoricoPSV" />
+                <marker date="1462875353847" expanded="true" signature="25790:26102" placeholder="select * fro... HistoricoPSV" />
+                <marker date="1462875353847" expanded="true" signature="26150:26449" placeholder="insert into HistoricoPSV... " />
+                <marker date="1462875353847" expanded="true" signature="26916:26986" placeholder="select * fro... EstadoHistoricoPSV" />
+                <marker date="1462875353847" expanded="true" signature="27026:27097" placeholder="insert into EstadoHistoricoPSV... " />
+                <marker date="1462875353847" expanded="true" signature="27525:27570" placeholder="select idPSV... PSVs" />
               </folding>
             </state>
           </provider>
@@ -106,8 +106,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2068965">
-              <caret line="75" column="110" selection-start-line="75" selection-start-column="110" selection-end-line="75" selection-end-column="110" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -226,6 +226,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -340,9 +343,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -914,11 +914,12 @@
       <workItem from="1462807048512" duration="131000" />
       <workItem from="1462829337080" duration="5442000" />
       <workItem from="1462869459317" duration="150000" />
+      <workItem from="1462869827368" duration="5548000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222721000" />
+    <option name="totallyTimeSpent" value="228269000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -931,7 +932,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1360" height="772" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -943,13 +944,13 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28870967" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2587519" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2587519" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36612904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37903225" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -963,6 +964,37 @@
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37903225" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28870967" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2587519" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -992,15 +1024,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java</url>
-          <line>165</line>
+          <line>233</line>
           <properties />
-          <option name="timeStamp" value="130" />
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java</url>
+          <line>178</line>
+          <properties />
+          <option name="timeStamp" value="136" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="131" />
+      <option name="time" value="137" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1373,6 +1411,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5555556">
+          <caret line="181" column="17" selection-start-line="181" selection-start-column="17" selection-end-line="181" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1462875353847" expanded="true" signature="6358:6584" placeholder="select PSVS.... PSVs" />
+            <marker date="1462875353847" expanded="true" signature="6358:6585" placeholder="select PSVS.... PSVs" />
+            <marker date="1462875353847" expanded="true" signature="6358:6744" placeholder="select PSVS.... PSVs" />
+            <marker date="1462875353847" expanded="true" signature="13629:13893" placeholder="select * fro... HistoricoPSV" />
+            <marker date="1462875353847" expanded="true" signature="14261:14540" placeholder="INSERT INTO HistoricoPSV... " />
+            <marker date="1462875353847" expanded="true" signature="15916:15938" placeholder="select * fro... DadosPSVGrafico" />
+            <marker date="1462875353847" expanded="true" signature="15916:15952" placeholder="select * fro... DadosPSV" />
+            <marker date="1462875353847" expanded="true" signature="15916:15954" placeholder="select * fro... DadosPSV" />
+            <marker date="1462875353847" expanded="true" signature="15916:15983" placeholder="select * fro... DadosPSV" />
+            <marker date="1462875353847" expanded="true" signature="15916:16007" placeholder="select * fro... DadosPSV" />
+            <marker date="1462875353847" expanded="true" signature="16043:16112" placeholder="select nomeP... PSVs" />
+            <marker date="1462875353847" expanded="true" signature="21270:21361" placeholder="select * fro... DadosPSV" />
+            <marker date="1462875353847" expanded="true" signature="21397:21466" placeholder="select nomeP... PSVs" />
+            <marker date="1462875353847" expanded="true" signature="23785:24090" placeholder="select idHis... HistoricoPSV" />
+            <marker date="1462875353847" expanded="true" signature="24457:24692" placeholder="select * fro... DadosPSV" />
+            <marker date="1462875353847" expanded="true" signature="24735:24937" placeholder="insert into DadosPSV... " />
+            <marker date="1462875353847" expanded="true" signature="25430:25510" placeholder="select IdEst... EstadoHistoricoPSV" />
+            <marker date="1462875353847" expanded="true" signature="25790:26102" placeholder="select * fro... HistoricoPSV" />
+            <marker date="1462875353847" expanded="true" signature="26150:26449" placeholder="insert into HistoricoPSV... " />
+            <marker date="1462875353847" expanded="true" signature="26916:26986" placeholder="select * fro... EstadoHistoricoPSV" />
+            <marker date="1462875353847" expanded="true" signature="27026:27097" placeholder="insert into EstadoHistoricoPSV... " />
+            <marker date="1462875353847" expanded="true" signature="27525:27570" placeholder="select idPSV... PSVs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowRegisterDataPSVsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1383,49 +1464,6 @@
             <marker date="1462443087858" expanded="true" signature="4423:4591" placeholder="INSERT INTO DadosPSV... " />
             <marker date="1462443087858" expanded="true" signature="4423:4595" placeholder="INSERT INTO DadosPSV... " />
             <marker date="1462443087858" expanded="true" signature="4423:4624" placeholder="INSERT INTO PSVs... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/view/windowGraph.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2068965">
-          <caret line="75" column="110" selection-start-line="75" selection-start-column="110" selection-end-line="75" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/com/controller/windowGraphController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31143552">
-          <caret line="163" column="14" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1462869541812" expanded="true" signature="6358:6584" placeholder="select PSVS.... PSVs" />
-            <marker date="1462869541812" expanded="true" signature="6358:6585" placeholder="select PSVS.... PSVs" />
-            <marker date="1462869541812" expanded="true" signature="6358:6744" placeholder="select PSVS.... PSVs" />
-            <marker date="1462869541812" expanded="true" signature="12289:12553" placeholder="select * fro... HistoricoPSV" />
-            <marker date="1462869541812" expanded="true" signature="12921:13200" placeholder="INSERT INTO HistoricoPSV... " />
-            <marker date="1462869541812" expanded="true" signature="14576:14598" placeholder="select * fro... DadosPSVGrafico" />
-            <marker date="1462869541812" expanded="true" signature="14576:14612" placeholder="select * fro... DadosPSV" />
-            <marker date="1462869541812" expanded="true" signature="14576:14614" placeholder="select * fro... DadosPSV" />
-            <marker date="1462869541812" expanded="true" signature="14576:14643" placeholder="select * fro... DadosPSV" />
-            <marker date="1462869541812" expanded="true" signature="14576:14667" placeholder="select * fro... DadosPSV" />
-            <marker date="1462869541812" expanded="true" signature="14703:14772" placeholder="select nomeP... PSVs" />
-            <marker date="1462869541812" expanded="true" signature="19910:20001" placeholder="select * fro... DadosPSV" />
-            <marker date="1462869541812" expanded="true" signature="20037:20106" placeholder="select nomeP... PSVs" />
-            <marker date="1462869541812" expanded="true" signature="22511:22816" placeholder="select idHis... HistoricoPSV" />
-            <marker date="1462869541812" expanded="true" signature="23183:23418" placeholder="select * fro... DadosPSV" />
-            <marker date="1462869541812" expanded="true" signature="23461:23663" placeholder="insert into DadosPSV... " />
-            <marker date="1462869541812" expanded="true" signature="24156:24236" placeholder="select IdEst... EstadoHistoricoPSV" />
-            <marker date="1462869541812" expanded="true" signature="24516:24828" placeholder="select * fro... HistoricoPSV" />
-            <marker date="1462869541812" expanded="true" signature="24876:25175" placeholder="insert into HistoricoPSV... " />
-            <marker date="1462869541812" expanded="true" signature="25642:25712" placeholder="select * fro... EstadoHistoricoPSV" />
-            <marker date="1462869541812" expanded="true" signature="25752:25823" placeholder="insert into EstadoHistoricoPSV... " />
-            <marker date="1462869541812" expanded="true" signature="26251:26296" placeholder="select idPSV... PSVs" />
           </folding>
         </state>
       </provider>

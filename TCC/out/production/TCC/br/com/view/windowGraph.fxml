@@ -82,7 +82,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="129.0">
                                        <children>
-                                          <TableView fx:id="tablePsvs" layoutX="-60.0" layoutY="-60.0" prefHeight="118.0" prefWidth="137.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tablePsvs" centerShape="false" layoutX="-60.0" layoutY="-60.0" prefHeight="118.0" prefWidth="137.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn fx:id="tablePSVsNome" minWidth="50.0" prefWidth="75.0" text="Nome" />
                                               <TableColumn fx:id="tablePSVsDescricao" minWidth="50.0" prefWidth="250.0" text="Descrição" />
