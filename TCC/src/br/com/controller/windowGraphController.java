@@ -3,6 +3,7 @@ package br.com.controller;
 import br.com.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javax.swing.*;
@@ -56,6 +58,7 @@ public class windowGraphController {
     private ObservableList<HistoriadorLista> historiadorData = FXCollections.observableArrayList();
     private boolean dadosUsuariosMudaram = false;
     private boolean dadosUsuarioUmavez = true;
+    private boolean booleanAnalisar = false;
     private Double pressaoAjusteUsuario = 0d;
     private Double pressaoMaximaeUsuario = 0d;
     private Double pressaoMinimseUsuario = 0d;
@@ -85,6 +88,7 @@ public class windowGraphController {
         columnHistoriadorPAjuste.setCellValueFactory(cellData -> cellData.getValue().pressaoDeAjusteProperty());
         columnHistoriadorPMinima.setCellValueFactory(cellData -> cellData.getValue().pressaoMinimaProperty());
         columnHistoriadorEstado.setCellValueFactory(cellData -> cellData.getValue().estadoPSVProperty());
+        pegandoOsDadosSemFazerAnalise();
     }
 
 
@@ -96,14 +100,10 @@ public class windowGraphController {
 //                    txtPressaoMinima.getText().matches("\\d*")) {
                 if((Double.valueOf(txtPressaoMaxima.getText().toString()) > Double.valueOf(txtPressaoSetPSV.getText().toString())) &&
                         (Double.valueOf(txtPressaoSetPSV.getText().toString())> Double.valueOf(txtPressaoMinima.getText().toString()))){
-
-                    //graphWindow.getData().clear();
                     plotParametrosPSVUsuario();
-
                     adicionaElementosListaPSVs();
-
                     adicionaElementosListaHistoriador();
-
+                    booleanAnalisar = true;
                 }
                 else{
                     JOptionPane.showConfirmDialog(null, "Os valores das pressões da PSV não está no padrão!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
@@ -113,7 +113,6 @@ public class windowGraphController {
 //                JOptionPane.showConfirmDialog(null, "Os dados não condizem com os parametros da PSV!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
 //            }
         }
-
         else{
             JOptionPane.showConfirmDialog(null, "Todos os campos tem que ser preenchidos!", "Alerta!", JOptionPane.OK_CANCEL_OPTION);
         }
@@ -155,28 +154,40 @@ public class windowGraphController {
     }
 
     private void adicionaElementosListaPSVs() {
+
         tablePsvs.setItems(psvsData);
+    }
+
+    public void filtraPSVs(){
+        if(!booleanAnalisar) {
+            ObservableList<PSVsLista> f = tablePsvs.getItems();
+            //graphWindow.getData().
+
+            String ff = "k";
+        }
+        else{
+
+        }
     }
 
     private void plotParametrosPSVUsuario(){
         verificarInserirDadosUsuarioDB();
         graphWindow.setLegendVisible(false);
-//        graphWindow.setCreateSymbols(false);
 
-        //remove as series anteriores
-        for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
-            graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
-        }
-
-        //remove as series anteriores referentes aos estados das psvs
-        for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
-            graphWindow.getData().remove(listaDeEstadosDeSeriesDasPSVs.get(i));
-        }
+        removeSeriesAnterioresDoGrafico();
 
         pegandoOsDados();
 
-        //depois remover os dados do usuário para deixar apenas linhas pretas, sem ser series
+        adicionarSeriesAoGrafico();
+        //graphWindow.setCreateSymbols(false);
+    }
 
+    private void adicionarSeriesAoGrafico() {
+        if(dadosUsuariosMudaram) {
+            graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
+            dadosUsuariosMudaram = false;
+        }
+        //graphWindow.setCreateSymbols(true);
         //adiciona a lista de series ao grafico
         for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
             graphWindow.getData().add(listaDeSeriesDasPSVs.get(i));
@@ -195,21 +206,20 @@ public class windowGraphController {
                 }
             }
         }
-        if(dadosUsuariosMudaram) {
-            graphWindow.getData().addAll(seriesSetPressaoPSV, seriesMaxPressaoPSV, seriesMinPressaoPSV);
-            dadosUsuariosMudaram = false;
-        }
-        Tooltip.install(seriesMaxPressaoPSV.getNode(), new Tooltip("Symbol-0"));
+        mudarCorSeriesPSVsNoGrafico();
+    }
 
+    private void mudarCorSeriesPSVsNoGrafico() {
+        Tooltip.install(seriesMaxPressaoPSV.getNode(), new Tooltip("Symbol-0"));
+        int Gren1 = 0;
+        int Red1 = 7;
+        int Blue1 = 5;
         //Muda as cores dos elementos do gráfico
         for (XYChart.Series s : graphWindow.getData()) {
 
-            if(("A PSV1 abriu!").equals(s.getName()) || ("A PSV2 abriu!").equals(s.getName()))
+            if(("A abriu!").equals(s.getName()))
             {
-                s.getNode().setStyle("-fx-stroke: #F00F0F; ");
-            }
-            else if(("PSV1").equals(s.getName()) || ("PSV2").equals(s.getName())){
-                s.getNode().setStyle("-fx-stroke: #0F00F0; ");
+                s.getNode().setStyle("-fx-stroke: #FF0000; ");
             }
             else if(("Ajuste PSV").equals(s.getName())){
                 s.getNode().setStyle("-fx-stroke: #837676; ");
@@ -217,8 +227,14 @@ public class windowGraphController {
             else if(("Max PSV").equals(s.getName()) || ("Min PSV").equals(s.getName())){
                 s.getNode().setStyle("-fx-stroke: #000000; ");
             }
+            else if(s.getNode().getStyle().equals(Color.RED)){
+                s.getNode().setStyle("-fx-stroke: #"+Red1+"F"+Gren1+"FF"+Blue1+"; ");
+            }
             else{
-                s.getNode().disableProperty();
+                s.getNode().setStyle("-fx-stroke: #"+Red1+"F"+Gren1+"FF"+Blue1+"; ");
+                //if(Gren1 != 9)
+                Gren1 += 8;
+
             }
             //adição do tootip ao grafico
             for (XYChart.Series<Number, Number> a : graphWindow.getData()) {
@@ -233,12 +249,37 @@ public class windowGraphController {
                     //Removing class on exit
                     d.getNode().setOnMouseExited(event -> d.getNode().getStyleClass().remove("onHover"));
                 }
-            }        }
-//      Tooltip tooltip = new Tooltip();
-
-
+            }
+        }
     }
 
+    private void removeSeriesAnterioresDoGrafico() {
+        //remove as series anteriores
+        for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
+        }
+
+        //remove as series anteriores referentes aos estados das psvs
+        for(int i=0 ; i<listaDeEstadosDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().remove(listaDeEstadosDeSeriesDasPSVs.get(i));
+        }
+    }
+
+    private void adicionaSeriesDasPSVsAoGrafico(){
+        removeListaDeSeriesAnteriorDoGrafico();
+        for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().add(listaDeSeriesDasPSVs.get(i));
+        }
+        mudarCorSeriesPSVsNoGrafico();
+        adicionaElementosListaPSVs();
+        //graphWindow.setCreateSymbols(false);
+    }
+
+    private void removeListaDeSeriesAnteriorDoGrafico(){
+        for(int i=0 ; i<listaDeSeriesDasPSVs.size() ; i++){
+            graphWindow.getData().remove(listaDeSeriesDasPSVs.get(i));
+        }
+    }
 
     private void verificarInserirDadosUsuarioDB(){
         Connection conexao = null;
@@ -356,7 +397,7 @@ public class windowGraphController {
                         }
                         if(contUmaVezAberturaPSV == 1){
                             if(verificaSeNaoExisteSerieNaLista(seriesEstado, listaDeEstadosDeSeriesDasPSVs)){
-                                seriesEstado.setName("A " + nomePSVAtual + " abriu!");
+                                seriesEstado.setName("A abriu!");
                                 listaDeEstadosDeSeriesDasPSVs.add(seriesEstado);
                                 seriesEstado = new XYChart.Series();
                             }
@@ -367,6 +408,73 @@ public class windowGraphController {
                         isenrirDadosPSVNoDB(conexao, dadosPSV, iDPSV);
                         pressaoAnteriroPSV = pressaoAtualPSV + 0.01d;
                         tempoAnteriorPSV = tempoAtualPSV + 0.01d;
+                    }
+                    series.setName(nomePSVAtual);
+                    listaDeSeriesDasPSVs.add(series);
+                    series = new XYChart.Series();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void pegandoOsDadosSemFazerAnalise(){
+        Connection conexao;
+        DadosPSV dadosPSV = new DadosPSV();
+        listaDeSeriesDasPSVs.clear();
+        listaDeIdPSVs.clear();
+        psvsData.clear();
+        try {
+            conexao = ConexaoDB.conectar();
+
+            setListaDeIdPSVs(conexao);
+
+            int quantPSVs = listaDeIdPSVs.size();
+            //adicionando dados a serie
+            setListaDeSeriesDasPSVsParaApenasPlotarSemAnalise(conexao, quantPSVs, dadosPSV);
+            plotDadosPSVSemAnalise();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void plotDadosPSVSemAnalise() {
+        adicionaSeriesDasPSVsAoGrafico();
+    }
+
+    public void setListaDeSeriesDasPSVsParaApenasPlotarSemAnalise(Connection conexao, int quantPSVs, DadosPSV dadosPSV){
+        Integer iDPSV;
+        for(int i = 0; i < quantPSVs ; i++) {
+            iDPSV = (Integer) listaDeIdPSVs.get(i);
+            String sql = "select * from DadosPSV WHERE idPSV = '" + listaDeIdPSVs.get(i) + "' order by idPSV,tempoPSV";
+            String sqlNomePSV = "select nomePSV from PSVs where idPSV = '" + listaDeIdPSVs.get(i) + "'";
+            String nomePSVAtual = "";
+            ResultSet resultadoNomePSV = null;
+            ResultSet resultSet = null;
+            Double pressaoAtualPSV;
+            Double tempoAtualPSV;
+            try {
+                resultSet = conexao.createStatement().executeQuery(sql);
+                resultadoNomePSV = conexao.createStatement().executeQuery(sqlNomePSV);
+                resultadoNomePSV.next();
+                nomePSVAtual = resultadoNomePSV.getString(1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                Boolean verificaSeExiste = resultSet.next();
+                if(verificaSeExiste) {//caso exista dados, pode passar
+                    while (verificaSeExiste) {//faz para cada PSV
+                        pressaoAtualPSV = resultSet.getDouble(2);
+                        tempoAtualPSV = resultSet.getDouble(3);
+                        verificaSeExiste = resultSet.next();
+                        if(!verificaSeExiste){
+                            break;
+                        }
+                        series.getData().add(new XYChart.Data(tempoAtualPSV, pressaoAtualPSV));//tempoXpressao
+                        dadosPSV.setPressaoPSV(pressaoAtualPSV);
+                        dadosPSV.setTempoPSV(tempoAtualPSV);
                     }
                     series.setName(nomePSVAtual);
                     listaDeSeriesDasPSVs.add(series);
@@ -507,21 +615,6 @@ public class windowGraphController {
         }
 
         return estadoPSV;
-    }
-
-    public void testeInformacaoPSV(DadosPSV dadosPSV){
-        if(pegaMaiorPressao >= Double.parseDouble(txtPressaoMaxima.getText().toString())){
-            serieInformacao.getData().add(new XYChart.Data(dadosPSV.getTempoPSV(), dadosPSV.getPressaoPSV()));
-            serieInformacao.setName("A PSV passou do limite!");
-        }
-        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoSetPSV.getText().toString())){
-            serieInformacao.getData().add(new XYChart.Data(dadosPSV.getTempoPSV(), dadosPSV.getPressaoPSV()));
-            serieInformacao.setName("A PSV abriu!");
-        }
-        else if(pegaMaiorPressao >= Double.parseDouble(txtPressaoMinima.getText().toString())){
-            serieInformacao.getData().add(new XYChart.Data(dadosPSV.getTempoPSV(), dadosPSV.getPressaoPSV()));
-            serieInformacao.setName("A PSV não abriu!");
-        }
     }
 
     //tentar substituir depois
