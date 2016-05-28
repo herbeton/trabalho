@@ -53,6 +53,8 @@ public class windowGraphController {
     public TableColumn<HistoriadorLista, String> columnHistoriadorPMinima;
     public TableColumn<HistoriadorLista, String> columnHistoriadorEstado;
     public TableView<HistoriadorLista> tableHistorian;
+    public RadioButton RadioButtonDetalhesCom;
+    public RadioButton RadioButtonDetalhesSem;
     private int idEstado = 0;
     private ObservableList<PSVsLista> psvsData = FXCollections.observableArrayList();
     private ObservableList<HistoriadorLista> historiadorData = FXCollections.observableArrayList();
@@ -225,6 +227,7 @@ public class windowGraphController {
 
     private void mudarCorSeriesPSVsNoGrafico() {
         Tooltip.install(seriesMaxPressaoPSV.getNode(), new Tooltip("Symbol-0"));
+        graphWindow.setCreateSymbols(true);
         int Gren1 = 0;
         int Red1 = 7;
         int Blue1 = 5;
@@ -263,6 +266,9 @@ public class windowGraphController {
                     d.getNode().setOnMouseExited(event -> d.getNode().getStyleClass().remove("onHover"));
                 }
             }
+        }
+        if(RadioButtonDetalhesSem.isSelected()){
+            graphWindow.setCreateSymbols(false);
         }
     }
 
